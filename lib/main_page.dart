@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 // CamelCase (낙타형)
 // snake_case (뱀형)
@@ -27,6 +28,11 @@ class _MainPageState extends State<MainPage> {
           // Column 내부에 있는 요소를 정렬
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              color: Colors.red,
+              width: 100,
+              height: 100,
+            ),
             Text(
               '숫자',
               style: TextStyle(
@@ -73,12 +79,18 @@ class _MainPageState extends State<MainPage> {
             ),
             // 로컬에서 이미지 가져오기
             // pubspec.yaml 파일 수정
-            Image.asset(
-              'assets/panda.jpg',
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
-            )
+            Container(
+              color: Colors.red,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  'assets/panda.jpg',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
           ],
         ),
       ),
