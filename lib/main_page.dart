@@ -17,6 +17,7 @@ class _MainPageState extends State<MainPage> {
   String _text = '';
 
   // https://docs.flutter.dev/cookbook/forms/text-field-changes
+  // 언더바의 의미: 이 클래스 안에서만 사용하겠다는 의미, 밖에서의 접근을 막음
   final _textController = TextEditingController();
 
   @override
