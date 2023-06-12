@@ -12,6 +12,7 @@ class MainPage extends StatefulWidget {
 
 // 완전 바깥은 그냥 Run 해야 적용됨
 class _MainPageState extends State<MainPage> {
+  // 변수, 인스턴스, 오브젝트(객체), 상수
   // shift + F6 refactor로 한꺼번에 바꾸기
   int number = 10; // build 바깥은 Hot restart로 실행해야 바뀜
   String _text = '';
@@ -21,7 +22,9 @@ class _MainPageState extends State<MainPage> {
   final _textController = TextEditingController();
 
   @override
+  // 화면이 닫힐 때 호출되는 함수
   void dispose() {
+    number = 11;
     // textController 사용 후 메모리를 위해 해제를 해줘야함
     _textController.dispose();
     super.dispose();
