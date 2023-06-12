@@ -33,6 +33,9 @@ class _MainPageState extends State<MainPage> {
               width: 100,
               height: 100,
             ),
+            // 위젯 간 간격을 줄 때 사용, Container 보다 SizedBox가 우위
+            SizedBox(height: 30),
+            Container(height: 30),
             Text(
               '숫자',
               style: TextStyle(
