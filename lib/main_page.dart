@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 
 // CamelCase (낙타형)
 // snake_case (뱀형)
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MainPage> createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int count = 0;
+class _MainPageState extends State<MainPage> {
+  // shift + F6 refactor로 한꺼번에 바꾸기
+  int number = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             Text(
-              '$count',
+              '$number',
               style: TextStyle(
                 color: Colors.red,
                 fontSize: 60,
@@ -60,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: () {
           // 화면 갱신
           setState(() {
-            count++;
+            number++;
           });
         },
         child: Icon(Icons.add),
