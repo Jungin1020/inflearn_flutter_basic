@@ -24,77 +24,79 @@ class _MainPageState extends State<MainPage> {
       ),
       body: Center(
         // option + Enter로 Column으로 감싸기
-        child: Column(
-          // Column 내부에 있는 요소를 정렬
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              color: Colors.red,
-              width: 100,
-              height: 100,
-            ),
-            // 위젯 간 간격을 줄 때 사용, Container 보다 SizedBox가 우위
-            SizedBox(height: 30),
-            Container(height: 30),
-            Text(
-              '숫자',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 30,
-              ),
-            ),
-            Text(
-              '$number',
-              style: TextStyle(
+        child: SingleChildScrollView(
+          child: Column(
+            // Column 내부에 있는 요소를 정렬
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
                 color: Colors.red,
-                fontSize: 60,
+                width: 100,
+                height: 100,
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                print('Elevated Button');
-              },
-              child: Text('Elevated Button'),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: Text('Text Button'),
-            ),
-            OutlinedButton(
-              onPressed: () {},
-              child: Text('Outlined Button'),
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: '글자',
-                border: OutlineInputBorder(),
-              ),
-              onChanged: (text) {
-                print(text);
-              },
-            ),
-            // URL로 이미지 가져오기
-            Image.network(
-              'https://media.istockphoto.com/id/184276818/photo/red-apple.jpg?s=612x612&w=0&k=20&c=NvO-bLsG0DJ_7Ii8SSVoKLurzjmV0Qi4eGfn6nW3l5w=',
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
-            ),
-            // 로컬에서 이미지 가져오기
-            // pubspec.yaml 파일 수정
-            Container(
-              color: Colors.red,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(
-                  'assets/panda.jpg',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
+              // 위젯 간 간격을 줄 때 사용, Container 보다 SizedBox가 우위
+              SizedBox(height: 100),
+              Container(height: 30),
+              Text(
+                '숫자',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 30,
                 ),
               ),
-            ),
-          ],
+              Text(
+                '$number',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 60,
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  print('Elevated Button');
+                },
+                child: Text('Elevated Button'),
+              ),
+              TextButton(
+                onPressed: () {},
+                child: Text('Text Button'),
+              ),
+              OutlinedButton(
+                onPressed: () {},
+                child: Text('Outlined Button'),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: '글자',
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (text) {
+                  print(text);
+                },
+              ),
+              // URL로 이미지 가져오기
+              Image.network(
+                'https://media.istockphoto.com/id/184276818/photo/red-apple.jpg?s=612x612&w=0&k=20&c=NvO-bLsG0DJ_7Ii8SSVoKLurzjmV0Qi4eGfn6nW3l5w=',
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+              // 로컬에서 이미지 가져오기
+              // pubspec.yaml 파일 수정
+              Container(
+                color: Colors.red,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(
+                    'assets/panda.jpg',
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
