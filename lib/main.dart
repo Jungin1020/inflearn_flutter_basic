@@ -32,6 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int count = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Text(
-          '0',
+          '$count',
           style: TextStyle(
             color: Colors.red,
             fontSize: 60,
@@ -50,7 +52,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print('클릭'); // 함수 작성되는 부분에는 별도로 문장이 작성됨
+          // 화면 갱신
+          setState(() {
+            count++;
+          });
         },
         child: Icon(Icons.add),
       ),
