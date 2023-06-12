@@ -24,7 +24,8 @@ class _MainPageState extends State<MainPage> {
   @override
   // 화면이 닫힐 때 호출되는 함수
   void dispose() {
-    number = 11;
+    number = 11; // 전역변수
+    int i = 10; // 지역변수
     // textController 사용 후 메모리를 위해 해제를 해줘야함
     _textController.dispose();
     super.dispose();
