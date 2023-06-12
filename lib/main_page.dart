@@ -14,6 +14,17 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   // shift + F6 refactor로 한꺼번에 바꾸기
   int number = 10; // build 바깥은 Hot restart로 실행해야 바뀜
+  String _text = '';
+
+  // https://docs.flutter.dev/cookbook/forms/text-field-changes
+  final _textController = TextEditingController();
+
+  @override
+  void dispose() {
+    // textController 사용 후 메모리를 위해 해제를 해줘야함
+    _textController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,19 +81,23 @@ class _MainPageState extends State<MainPage> {
                   Expanded(
                     flex: 3,
                     child: TextField(
+                      controller: _textController,
                       decoration: InputDecoration(
                         labelText: '글자',
                         border: OutlineInputBorder(),
                       ),
                       onChanged: (text) {
-                        print(text);
+                        _text = text;
                       },
                     ),
                   ),
                   Expanded(
                       flex: 2,
                       child: ElevatedButton(
-                          onPressed: () {}, child: Text('login')))
+                          onPressed: () {
+                            print(_textController.text);
+                          },
+                          child: Text('login')))
                 ],
               ),
               // URL로 이미지 가져오기
