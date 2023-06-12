@@ -64,6 +64,21 @@ class _MainPageState extends State<MainPage> {
                 print(text);
               },
             ),
+            // URL로 이미지 가져오기
+            Image.network(
+              'https://media.istockphoto.com/id/184276818/photo/red-apple.jpg?s=612x612&w=0&k=20&c=NvO-bLsG0DJ_7Ii8SSVoKLurzjmV0Qi4eGfn6nW3l5w=',
+              width: 100,
+              height: 100,
+              fit: BoxFit.cover,
+            ),
+            // 로컬에서 이미지 가져오기
+            // pubspec.yaml 파일 수정
+            Image.asset(
+              'assets/panda.jpg',
+              width: 100,
+              height: 100,
+              fit: BoxFit.cover,
+            )
           ],
         ),
       ),
