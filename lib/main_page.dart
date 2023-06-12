@@ -9,16 +9,17 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
+// 완전 바깥은 그냥 Run 해야 적용됨
 class _MainPageState extends State<MainPage> {
   // shift + F6 refactor로 한꺼번에 바꾸기
-  int number = 0;
+  int number = 10; // build 바깥은 Hot restart로 실행해야 바뀜
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // 앱을 만들 때 기본이 되는 뼈대를 제공하는 위젯
       appBar: AppBar(
-        title: Text('홈'),
+        title: Text('카운터'), // Hot reload
       ),
       body: Center(
         // option + Enter로 Column으로 감싸기
