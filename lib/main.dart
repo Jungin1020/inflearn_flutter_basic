@@ -48,6 +48,12 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('클릭'); // 함수 작성되는 부분에는 별도로 문장이 작성됨
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
