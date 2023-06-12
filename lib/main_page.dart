@@ -65,14 +65,25 @@ class _MainPageState extends State<MainPage> {
                 onPressed: () {},
                 child: Text('Outlined Button'),
               ),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: '글자',
-                  border: OutlineInputBorder(),
-                ),
-                onChanged: (text) {
-                  print(text);
-                },
+              Row(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        labelText: '글자',
+                        border: OutlineInputBorder(),
+                      ),
+                      onChanged: (text) {
+                        print(text);
+                      },
+                    ),
+                  ),
+                  Expanded(
+                      flex: 2,
+                      child: ElevatedButton(
+                          onPressed: () {}, child: Text('login')))
+                ],
               ),
               // URL로 이미지 가져오기
               Image.network(
