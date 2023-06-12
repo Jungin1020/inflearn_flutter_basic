@@ -96,10 +96,14 @@ class _MainPageState extends State<MainPage> {
                       child: ElevatedButton(
                           onPressed: () {
                             print(_textController.text);
+
+                            // 화면 갱신
+                            setState(() {});
                           },
                           child: Text('login')))
                 ],
               ),
+              Text(_textController.text),
               // URL로 이미지 가져오기
               Image.network(
                 'https://media.istockphoto.com/id/184276818/photo/red-apple.jpg?s=612x612&w=0&k=20&c=NvO-bLsG0DJ_7Ii8SSVoKLurzjmV0Qi4eGfn6nW3l5w=',
