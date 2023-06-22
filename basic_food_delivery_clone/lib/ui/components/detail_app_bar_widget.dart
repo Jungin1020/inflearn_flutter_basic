@@ -19,7 +19,7 @@ class DetailAppBarWidget extends StatelessWidget {
         // color: Colors.blueAccent,
         decoration: const BoxDecoration(
             // color: Colors.blueAccent.shade400,
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30))),
+            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50))),
         child: Column(
           children: [
             Expanded(
