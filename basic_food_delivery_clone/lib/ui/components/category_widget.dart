@@ -1,7 +1,11 @@
+import 'package:basic_food_delivery_clone/ui/components/category_button_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/food_category.dart';
+
 class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({Key? key}) : super(key: key);
+  CategoryWidget({Key? key}) : super(key: key);
+  final Map<String, dynamic> foodCategoryMaps = foodMaps;
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +17,10 @@ class CategoryWidget extends StatelessWidget {
         child: Row(
           children: [
             _buildWidthSizedBox(20),
-            _buildCategoryButton(),
-            _buildCategoryButton(),
-            _buildCategoryButton(),
-            _buildCategoryButton(),
-            _buildCategoryButton(),
+            ...foodMaps.keys
+                .map(
+                    (food) => CategoryButton(top: foodMaps[food], bottom: food))
+                .toList()
           ],
         ),
       ),

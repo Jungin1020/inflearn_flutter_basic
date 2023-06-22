@@ -32,7 +32,7 @@ class _MainScreenState extends State<MainScreen> {
                 _buildSizedBox(30),
                 const SearchWidget(),
                 _buildSizedBox(20),
-                const CategoryWidget(),
+                CategoryWidget(),
                 _buildSizedBox(30),
                 RestaurantListWidget(restaurants: restaurants),
                 _buildSizedBox(24),
