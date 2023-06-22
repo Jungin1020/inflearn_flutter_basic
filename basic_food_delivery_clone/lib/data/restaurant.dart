@@ -1,5 +1,4 @@
 import 'menu.dart';
-import 'menu_repo.dart';
 
 class Restaurant {
   int id;

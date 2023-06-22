@@ -1,4 +1,3 @@
-import 'package:basic_food_delivery_clone/ui/main/detail_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/restaurant.dart';
@@ -31,9 +30,9 @@ class _MainScreenState extends State<MainScreen> {
             child: SingleChildScrollView(
               child: Column(children: [
                 _buildSizedBox(30),
-                SearchWidget(),
+                const SearchWidget(),
                 _buildSizedBox(20),
-                CategoryWidget(),
+                const CategoryWidget(),
                 _buildSizedBox(30),
                 RestaurantListWidget(restaurants: restaurants),
                 _buildSizedBox(24),
