@@ -28,9 +28,9 @@ class RestaurantRepository {
         category: 'Asian',
         categoryDetail: 'Seafood',
         description:
-            'The panoramic dining at 11 Mirrors Restaurant presents a number of trademarks dishes.',
+            'The restaurant where you can experience the delicacies of various fish and seafood.',
         address: '426 Amsterdam Ave, NY',
-        distance: 11.1,
+        distance: 8.8,
         stars: 4.6,
         menus: menus,
         imgUrl:
@@ -39,13 +39,13 @@ class RestaurantRepository {
       Restaurant(
         id: 2,
         name: 'Carmine',
-        category: 'Asian',
+        category: 'Bar',
         categoryDetail: 'Seafood',
         description:
-            'The panoramic dining at 11 Mirrors Restaurant presents a number of trademarks dishes.',
+            '"A cozy bar where you can enjoy a romantic atmosphere with your loved one.',
         address: '426 Amsterdam Ave, NY',
-        distance: 11.1,
-        stars: 4.0,
+        distance: 7.4,
+        stars: 3.9,
         menus: menus,
         imgUrl: 'https://t1.daumcdn.net/cfile/tistory/2310AD4851C391522D',
       ),
@@ -55,10 +55,10 @@ class RestaurantRepository {
         category: 'Asian',
         categoryDetail: 'Seafood',
         description:
-            'The panoramic dining at 11 Mirrors Restaurant presents a number of trademarks dishes.',
+            'A vegetarian restaurant located in a forest, where you can embrace the beauty of nature.',
         address: '426 Amsterdam Ave, NY',
-        distance: 11.1,
-        stars: 4.0,
+        distance: 28.7,
+        stars: 4.8,
         menus: menus,
         imgUrl:
             'https://img8.yna.co.kr/etc/inner/KR/2020/03/24/AKR20200324173300030_02_i_P4.jpg',

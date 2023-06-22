@@ -11,26 +11,40 @@ class DetailAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(children: [
-      Container(
-        height: 280,
-        width: double.infinity,
-        // color: Colors.blueAccent,
-        decoration: const BoxDecoration(
-            // color: Colors.blueAccent.shade400,
-            borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50))),
-        child: Column(
-          children: [
-            Expanded(
-              child: Hero(
-                tag: restaurant.id,
-                child: Image.network(
-                  restaurant.imgUrl,
-                  fit: BoxFit.cover,
-                ),
+      // Container(
+      //   height: 280,
+      //   width: double.infinity,
+      //   // color: Colors.blueAccent,
+      //   decoration: const BoxDecoration(
+      //       // color: Colors.blueAccent.shade400,
+      //       borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50))),
+      //   child: Column(
+      //     children: [
+      //       Expanded(
+      //         child: Hero(
+      //           tag: restaurant.id,
+      //           child: Image.network(
+      //             restaurant.imgUrl,
+      //             fit: BoxFit.cover,
+      //           ),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
+
+      ClipRRect(
+        borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(30)),
+        child: Hero(
+            tag: restaurant.id,
+            child: SizedBox(
+              height: 280,
+              width: double.infinity,
+              child: Image.network(
+                restaurant.imgUrl,
+                fit: BoxFit.fill,
               ),
-            ),
-          ],
-        ),
+            )),
       ),
       Positioned(
         top: 30,

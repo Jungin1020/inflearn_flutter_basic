@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../data/restaurant.dart';
 import '../main/detail_screen.dart';
@@ -79,23 +82,13 @@ class RestaurantTileWidget extends StatelessWidget {
                 top: 0,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailScreen(),
-                        ),
-                      );
-                    },
-                    child: Hero(
-                      tag: restaurant.id,
-                      child: Image.network(
-                        restaurant.imgUrl,
-                        width: 100,
-                        height: 112,
-                        fit: BoxFit.fitHeight,
-                      ),
+                  child: Hero(
+                    tag: restaurant.id,
+                    child: Image.network(
+                      restaurant.imgUrl,
+                      width: 100,
+                      height: 112,
+                      fit: BoxFit.fitHeight,
                     ),
                   ),
                 ),
