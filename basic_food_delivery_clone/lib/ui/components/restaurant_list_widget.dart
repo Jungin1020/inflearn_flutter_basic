@@ -1,5 +1,6 @@
 import 'package:basic_food_delivery_clone/ui/components/restaurant_tile_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../data/restaurant.dart';
 
@@ -12,7 +13,11 @@ class RestaurantListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
         children: restaurants
-            .map((restaurant) => RestaurantTileWidget(restaurant: restaurant))
+            .map((restaurant) => GestureDetector(
+                onTap: () {
+                  context.push('/detail');
+                },
+                child: RestaurantTileWidget(restaurant: restaurant)))
             .toList());
   }
 }

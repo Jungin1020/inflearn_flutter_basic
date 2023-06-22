@@ -1,5 +1,9 @@
 import 'menu.dart';
 
+import 'package:json_annotation/json_annotation.dart';
+part 'restaurant.g.dart';
+
+@JsonSerializable(explicitToJson: true)
 class Restaurant {
   int id;
   String name;
@@ -9,7 +13,7 @@ class Restaurant {
   String address;
   double distance;
   double stars;
-  List<Menu> menu;
+  List<Menu> menus;
   String imgUrl;
 
   Restaurant(
@@ -21,6 +25,11 @@ class Restaurant {
       required this.address,
       required this.distance,
       required this.stars,
-      required this.menu,
+      required this.menus,
       required this.imgUrl});
+
+  factory Restaurant.fromJson(Map<String, dynamic> json) =>
+      _$RestaurantFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RestaurantToJson(this);
 }

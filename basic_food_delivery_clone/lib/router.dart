@@ -13,7 +13,7 @@ final router = GoRouter(
     ),
     GoRoute(
       path: '/detail',
-      builder: (context, state) => DetailScreen(),
+      builder: (context, state) => const DetailScreen(),
     ),
   ],
 );

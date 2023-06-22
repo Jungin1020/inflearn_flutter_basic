@@ -4,9 +4,9 @@ import '../../data/restaurant.dart';
 import '../main/main_screen.dart';
 
 class DetailAppBarWidget extends StatelessWidget {
-  const DetailAppBarWidget({Key? key, required this.restaurants})
+  const DetailAppBarWidget({Key? key, required this.restaurant})
       : super(key: key);
-  final List<Restaurant> restaurants;
+  final Restaurant restaurant;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +22,9 @@ class DetailAppBarWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Hero(
-                tag: restaurants[0].id,
+                tag: restaurant.id,
                 child: Image.network(
-                  restaurants[0].imgUrl,
+                  restaurant.imgUrl,
                   fit: BoxFit.cover,
                 ),
               ),
