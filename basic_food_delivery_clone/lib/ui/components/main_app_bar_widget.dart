@@ -1,4 +1,3 @@
-import 'package:basic_food_delivery_clone/data/user_repo.dart';
 import 'package:basic_food_delivery_clone/ui/components/user_info_widget.dart';
 import 'package:basic_food_delivery_clone/ui/components/user_photo_name_widget.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +5,8 @@ import 'package:flutter/material.dart';
 import '../../data/user.dart';
 
 class MainAppBarWidget extends StatelessWidget {
-  MainAppBarWidget({Key? key, required this.users}) : super(key: key);
-  List<User> users;
+  const MainAppBarWidget({Key? key, required this.users}) : super(key: key);
+  final List<User> users;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,8 @@ class MainAppBarWidget extends StatelessWidget {
       height: 216,
       decoration: BoxDecoration(
           color: Colors.blueAccent.shade400,
-          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30))),
+          borderRadius:
+              const BorderRadius.only(bottomLeft: Radius.circular(30))),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(

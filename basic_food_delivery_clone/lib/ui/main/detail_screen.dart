@@ -8,7 +8,7 @@ import '../components/detaul_menu_widget.dart';
 
 class DetailScreen extends StatelessWidget {
   DetailScreen({Key? key}) : super(key: key);
-  List<Restaurant> restaurants = RestaurantRepository().getRestaurants();
+  final List<Restaurant> restaurants = RestaurantRepository().getRestaurants();
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +18,9 @@ class DetailScreen extends StatelessWidget {
           children: [
             DetailAppBarWidget(restaurants: restaurants),
             _buildSizedBox(28),
-            DetailAboutWidget(),
+            const DetailAboutWidget(),
             _buildSizedBox(28),
-            DetailMenuWidget(),
+            const DetailMenuWidget(),
           ],
         ),
       ),

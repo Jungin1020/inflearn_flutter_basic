@@ -1,14 +1,12 @@
-import 'package:basic_food_delivery_clone/data/user_repo.dart';
-import 'package:basic_food_delivery_clone/ui/components/user_info_widget.dart';
-import 'package:basic_food_delivery_clone/ui/components/user_photo_name_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/restaurant.dart';
 import '../main/main_screen.dart';
 
 class DetailAppBarWidget extends StatelessWidget {
-  DetailAppBarWidget({Key? key, required this.restaurants}) : super(key: key);
-  List<Restaurant> restaurants;
+  const DetailAppBarWidget({Key? key, required this.restaurants})
+      : super(key: key);
+  final List<Restaurant> restaurants;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +37,7 @@ class DetailAppBarWidget extends StatelessWidget {
         left: 10,
         child: IconButton(
           color: Colors.black,
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             size: 20,
           ),
@@ -48,7 +46,7 @@ class DetailAppBarWidget extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MainScreen(),
+                builder: (context) => const MainScreen(),
               ),
             );
           },
@@ -56,12 +54,4 @@ class DetailAppBarWidget extends StatelessWidget {
       ),
     ]);
   }
-
-  Widget _buildHeightSizedBox(double size) {
-    return SizedBox(height: size);
-  }
-
-// Widget _buildWidthSizedBox(double size) {
-//   return SizedBox(width: size);
-// }
 }
