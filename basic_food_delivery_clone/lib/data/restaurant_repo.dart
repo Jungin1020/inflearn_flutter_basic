@@ -42,7 +42,7 @@ class RestaurantRepository {
         category: 'Bar',
         categoryDetail: 'Seafood',
         description:
-            '"A cozy bar where you can enjoy a romantic atmosphere with your loved one.',
+            'A cozy bar where you can enjoy a romantic atmosphere with your loved one.',
         address: '426 Amsterdam Ave, NY',
         distance: 7.4,
         stars: 3.9,
