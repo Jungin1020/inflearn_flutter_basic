@@ -1,3 +1,6 @@
+import 'package:basic_99_instagram_clone/tab/account/account_page.dart';
+import 'package:basic_99_instagram_clone/tab/home/home_page.dart';
+import 'package:basic_99_instagram_clone/tab/search/search_page.dart';
 import 'package:flutter/material.dart';
 
 class TabPage extends StatefulWidget {
@@ -10,9 +13,12 @@ class TabPage extends StatefulWidget {
 class _TabPageState extends State<TabPage> {
   int _currentIndex = 0;
 
+  final _pages = const [HomePage(), SearchPage(), AccountPage()];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
