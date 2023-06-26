@@ -1,3 +1,4 @@
+import 'package:basic_99_instagram_clone/create/create_page.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
@@ -14,7 +15,12 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreatePage()),
+          );
+        },
         child: const Icon(Icons.create),
       ),
       appBar: AppBar(
