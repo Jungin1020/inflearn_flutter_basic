@@ -1,7 +1,9 @@
+import 'package:basic_99_instagram_clone/tab/account/account_model.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatelessWidget {
-  const AccountPage({Key? key}) : super(key: key);
+  final model = AccountModel();
+  AccountPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +12,10 @@ class AccountPage extends StatelessWidget {
         title: const Text('Instagram Clone'),
         actions: [
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.exit_to_app_outlined))
+              onPressed: () {
+                model.logout();
+              },
+              icon: const Icon(Icons.exit_to_app_outlined))
         ],
       ),
       body: const Padding(

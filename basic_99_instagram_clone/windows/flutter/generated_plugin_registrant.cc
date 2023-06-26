@@ -6,12 +6,12 @@
 
 #include "generated_plugin_registrant.h"
 
-#include <file_selector_windows/file_selector_windows.h>
+#include <desktop_webview_auth/desktop_webview_auth_plugin.h>
 #include <firebase_core/firebase_core_plugin_c_api.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
-  FileSelectorWindowsRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("FileSelectorWindows"));
+  DesktopWebviewAuthPluginRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("DesktopWebviewAuthPlugin"));
   FirebaseCorePluginCApiRegisterWithRegistrar(
       registry->GetRegistrarForPlugin("FirebaseCorePluginCApi"));
 }

@@ -13,7 +13,7 @@ class TabPage extends StatefulWidget {
 class _TabPageState extends State<TabPage> {
   int _currentIndex = 0;
 
-  final _pages = const [HomePage(), SearchPage(), AccountPage()];
+  final _pages = [HomePage(), SearchPage(), AccountPage()];
 
   @override
   Widget build(BuildContext context) {
