@@ -13,9 +13,20 @@ class AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         // User is not signed in
         if (!snapshot.hasData) {
-          return const SignInScreen(providerConfigs: [
-            EmailProviderConfiguration(),
-          ]);
+          return SignInScreen(
+              headerBuilder: (context, constraints, _) {
+                return Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Image.network(
+                        'https://firebase.flutter.dev/img/flutterfire_300x.png'),
+                  ),
+                );
+              },
+              providerConfigs: [
+                EmailProviderConfiguration(),
+              ]);
         }
         // Render your application if authenticated
         return const TabPage();
