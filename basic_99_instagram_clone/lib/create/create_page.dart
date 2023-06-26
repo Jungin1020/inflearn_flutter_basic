@@ -1,14 +1,31 @@
+import 'dart:io';
+
+import 'package:basic_99_instagram_clone/create/create_model.dart';
 import 'package:flutter/material.dart';
 
-class CreatePage extends StatelessWidget {
+class CreatePage extends StatefulWidget {
   const CreatePage({Key? key}) : super(key: key);
+
+  @override
+  State<CreatePage> createState() => _CreatePageState();
+}
+
+class _CreatePageState extends State<CreatePage> {
+  final model = CreateModel();
+  File? _image;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('새 게시물'),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.send))],
+        actions: [
+          IconButton(
+              onPressed: () {
+                // 이미지 피커 실행
+              },
+              icon: const Icon(Icons.send))
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -27,11 +44,18 @@ class CreatePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-              ElevatedButton(onPressed: () {}, child: const Text('이미지 선택')),
-              Image.network(
-                'https://www.kukinews.com/data/kuk/image/2021/01/04/kuk202101040370.680x.0.jpg',
-                width: 350,
-              )
+              ElevatedButton(
+                  onPressed: () async {
+                    _image = await model.getImage();
+                    // 화면갱신
+                    setState(() {});
+                  },
+                  child: const Text('이미지 선택')),
+              if (_image != null)
+                Image.file(
+                  _image!,
+                  width: 350,
+                )
             ],
           ),
         ),
