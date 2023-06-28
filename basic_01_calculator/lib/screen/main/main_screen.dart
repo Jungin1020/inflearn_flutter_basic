@@ -1,6 +1,7 @@
-import 'package:basic_01_calculator/result/result_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../result/result_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -42,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
     if (height != null && weight != null) {
       _heightController.text = '$height';
       _weightController.text = '$weight';
-      print('$height');
+      // print('$height');
     }
   }
 
