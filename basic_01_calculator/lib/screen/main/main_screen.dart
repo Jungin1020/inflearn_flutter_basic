@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../result/result_screen.dart';
 import 'main_screen_view_model.dart';
 
 class MainScreen extends StatefulWidget {
@@ -11,19 +9,19 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final mainScreenModel = MainScreenViewModel();
+  final viewModel = MainScreenViewModel();
 
   @override
   void initState() {
     super.initState();
     // 화면이 처음 시작되는 부분
-    mainScreenModel.load();
+    viewModel.load();
   }
 
   @override
   void dispose() {
-    mainScreenModel.heightController.dispose();
-    mainScreenModel.weightController.dispose();
+    viewModel.heightController.dispose();
+    viewModel.weightController.dispose();
     super.dispose();
   }
 
@@ -36,36 +34,36 @@ class _MainScreenState extends State<MainScreen> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Form(
-          key: mainScreenModel.formKey,
+          key: viewModel.formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               TextFormField(
-                controller: mainScreenModel.heightController,
+                controller: viewModel.heightController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), hintText: '키'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
-                  return mainScreenModel.existValueHeight(value);
+                  return viewModel.existValueHeight(value);
                 },
               ),
               const SizedBox(height: 8),
               TextFormField(
-                controller: mainScreenModel.weightController,
+                controller: viewModel.weightController,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), hintText: '몸무게'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
-                  return mainScreenModel.existValueWeight(value);
+                  return viewModel.existValueWeight(value);
                 },
               ),
               const SizedBox(height: 8),
               ElevatedButton(
                   child: const Text('결과'),
                   onPressed: () {
-                    mainScreenModel.existFormKeyCurrentState();
-                    mainScreenModel.save();
-                    mainScreenModel.navPush(context);
+                    viewModel.existFormKeyCurrentState();
+                    viewModel.save();
+                    viewModel.navPush(context);
                   }),
             ],
           ),
