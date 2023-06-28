@@ -18,8 +18,8 @@ class AccountPage extends StatelessWidget {
               icon: const Icon(Icons.exit_to_app_outlined))
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -30,11 +30,10 @@ class AccountPage extends StatelessWidget {
                     height: 60,
                     width: 60,
                     child: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          'https://www.kukinews.com/data/kuk/image/2021/01/04/kuk202101040370.680x.0.jpg'),
+                      backgroundImage: NetworkImage(model.getProfileImageUrl()),
                     ),
                   ),
-                  Stack(
+                  const Stack(
                     alignment: AlignmentDirectional.center,
                     children: [
                       SizedBox(
@@ -58,26 +57,26 @@ class AccountPage extends StatelessWidget {
                     ],
                   )
                 ]),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
-                  'name',
+                  model.getNickName(),
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-            Column(
+            const Column(
               children: [
                 Text('3'),
                 Text('게시물'),
               ],
             ),
-            Column(
+            const Column(
               children: [
                 Text('3'),
                 Text('게시물'),
               ],
             ),
-            Column(
+            const Column(
               children: [
                 Text('3'),
                 Text('게시물'),
