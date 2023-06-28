@@ -1,3 +1,4 @@
+import 'package:basic_99_pixabay/ui/search_screen_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../data/api/photo_api.dart';
@@ -16,7 +17,6 @@ class _FutureScreenState extends State<FutureScreen> {
 
   // final q = 'apple';
   String q = 'apple';
-  final controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +34,13 @@ class _FutureScreenState extends State<FutureScreen> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 // Textfield 위젯으로 빼고 싶은데 어떻게 해야할까요?
-                child: TextField(
-                  controller: controller,
-                  decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                        icon: const Icon(Icons.search_outlined),
-                        onPressed: () {
-                          q = controller.text;
-                          setState(() {});
-                        }),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                    labelText: 'Search images',
-                  ),
-                ),
+                child: SearchScreenWidget(onTextChange: (query) {
+                  // debounce 처리
+                  setState(() {
+                    q = query;
+                  });
+
+                }),
               ),
             ),
             const SizedBox(height: 30),
