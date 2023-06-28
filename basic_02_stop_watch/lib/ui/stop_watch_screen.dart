@@ -15,7 +15,7 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
   int _time = 0;
   bool _isRunning = false;
 
-  List<String> _lapTimes = [];
+  final List<String> _lapTimes = [];
 
   void _clickButton() {
     _isRunning = !_isRunning;
@@ -67,21 +67,30 @@ class _StopWatchScreenState extends State<StopWatchScreen> {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 30),
+          const SizedBox(height: 200),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
-                '$sec',
-                style: const TextStyle(
-                  fontSize: 50,
+              SizedBox(width: 20),
+              SizedBox(
+                width: 100,
+                child: Text(
+                  '$sec',
+                  textAlign: TextAlign.end,
+                  style: const TextStyle(
+                    fontSize: 100,
+                  ),
                 ),
               ),
-              Text(
-                '$hundredth',
-                style: const TextStyle(
-                  fontSize: 20,
+              SizedBox(
+                height: 50,
+                width: 80,
+                child: Text(
+                  hundredth,
+                  style: const TextStyle(
+                    fontSize: 30,
+                  ),
                 ),
               ),
             ],
