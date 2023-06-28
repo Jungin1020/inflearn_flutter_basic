@@ -11,7 +11,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final _formKey = GlobalKey<FormState>();
   final mainScreenModel = MainScreenViewModel();
 
   @override
@@ -37,63 +36,37 @@ class _MainScreenState extends State<MainScreen> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Form(
-          key: _formKey,
+          key: mainScreenModel.formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               TextFormField(
                 controller: mainScreenModel.heightController,
                 decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: '키',
-                ),
+                    border: OutlineInputBorder(), hintText: '키'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
-                  return mainScreenModel.existValue(value);
+                  return mainScreenModel.existValueHeight(value);
                 },
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               TextFormField(
                 controller: mainScreenModel.weightController,
                 decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: '몸무게',
-                ),
+                    border: OutlineInputBorder(), hintText: '몸무게'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return '몸무게를 입력하세요.';
-                  }
-                  return null;
+                  return mainScreenModel.existValueWeight(value);
                 },
               ),
-              const SizedBox(
-                height: 8,
-              ),
+              const SizedBox(height: 8),
               ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState?.validate() == null) {
-                    return;
-                  }
-
-                  mainScreenModel.save();
-
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ResultScreen(
-                        height:
-                            double.parse(mainScreenModel.heightController.text),
-                        weight:
-                            double.parse(mainScreenModel.weightController.text),
-                      ),
-                    ),
-                  );
-                },
-                child: const Text('결과'),
-              )
+                  child: const Text('결과'),
+                  onPressed: () {
+                    mainScreenModel.existFormKeyCurrentState();
+                    mainScreenModel.save();
+                    mainScreenModel.navPush(context);
+                  }),
             ],
           ),
         ),
