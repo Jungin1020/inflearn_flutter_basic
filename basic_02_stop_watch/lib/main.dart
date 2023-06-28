@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:stop_watch/stop_watch_screen.dart';
+import 'package:stop_watch/ui/stop_watch_screen.dart';
 
 void main() {
   runApp(const MyApp());
