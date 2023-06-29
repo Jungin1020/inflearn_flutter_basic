@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:basic_99_pixabay/screen/detail_screen.dart';
-import 'package:basic_99_pixabay/screen/future_screen.dart';
+import 'package:basic_99_pixabay/screen/main_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import 'data/model/photo.dart';

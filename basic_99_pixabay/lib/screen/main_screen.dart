@@ -33,13 +33,12 @@ class _FutureScreenState extends State<FutureScreen> {
               height: 50,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                // Textfield 위젯으로 빼고 싶은데 어떻게 해야할까요?
+                // Textfield 위젯으로 빼고 싶은데 어떻게 해야할까요? > 선생님 해결
                 child: SearchScreenWidget(onTextChange: (query) {
                   // debounce 처리
                   setState(() {
                     q = query;
                   });
-
                 }),
               ),
             ),
