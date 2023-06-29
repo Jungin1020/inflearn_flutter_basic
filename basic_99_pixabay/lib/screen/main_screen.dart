@@ -1,4 +1,4 @@
-import 'package:basic_99_pixabay/ui/search_screen_widget.dart';
+import 'package:basic_99_pixabay/ui/search_text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../data/api/photo_api.dart';
