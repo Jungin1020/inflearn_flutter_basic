@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:basic_99_pixabay/screen/detail_screen.dart';
-import 'package:basic_99_pixabay/screen/main_screen.dart';
+import 'package:basic_99_pixabay/ui/detail_screen.dart';
+import 'package:basic_99_pixabay/ui/main_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import 'data/model/photo.dart';
@@ -8,7 +8,7 @@ import 'data/model/photo.dart';
 final router = GoRouter(initialLocation: '/future', routes: [
   GoRoute(
     path: '/future',
-    builder: (context, state) => const FutureScreen(),
+    builder: (context, state) => const MainScreen(),
   ),
   GoRoute(
     path: '/detail',

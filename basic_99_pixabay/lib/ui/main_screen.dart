@@ -1,18 +1,18 @@
-import 'package:basic_99_pixabay/ui/search_text_field_widget.dart';
+import 'package:basic_99_pixabay/ui/components/search_text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../data/api/photo_api.dart';
 import '../data/model/photo.dart';
-import '../ui/photo_grid_view_widget.dart';
+import 'components/photo_grid_view_widget.dart';
 
-class FutureScreen extends StatefulWidget {
-  const FutureScreen({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
-  State<FutureScreen> createState() => _FutureScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _FutureScreenState extends State<FutureScreen> {
+class _MainScreenState extends State<MainScreen> {
   final api = PhotoApi();
 
   // final q = 'apple';
@@ -33,8 +33,7 @@ class _FutureScreenState extends State<FutureScreen> {
               height: 50,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                // Textfield 위젯으로 빼고 싶은데 어떻게 해야할까요? > 선생님 해결
-                child: SearchScreenWidget(onTextChange: (query) {
+                child: SearchTextFieldWidget(onTextChange: (query) {
                   // debounce 처리
                   setState(() {
                     q = query;

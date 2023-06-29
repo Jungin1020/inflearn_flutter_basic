@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../data/model/photo.dart';
+import '../../data/model/photo.dart';
 
 class PhotoGridViewWidget extends StatelessWidget {
   const PhotoGridViewWidget({

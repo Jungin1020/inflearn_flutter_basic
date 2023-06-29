@@ -2,21 +2,21 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class SearchScreenWidget extends StatefulWidget {
+class SearchTextFieldWidget extends StatefulWidget {
   final void Function(String query)? onTap;
   final void Function(String query)? onTextChange;
 
-  const SearchScreenWidget({
+  const SearchTextFieldWidget({
     super.key,
     this.onTap,
     this.onTextChange,
   });
 
   @override
-  State<SearchScreenWidget> createState() => _SearchScreenWidgetState();
+  State<SearchTextFieldWidget> createState() => _SearchTextFieldWidgetState();
 }
 
-class _SearchScreenWidgetState extends State<SearchScreenWidget> {
+class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
   final controller = TextEditingController();
 
   // debounce를 적용할 시간 간격 (밀리초 단위)
