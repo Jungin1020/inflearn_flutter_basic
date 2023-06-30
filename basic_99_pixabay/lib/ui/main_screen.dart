@@ -1,5 +1,7 @@
 import 'package:basic_99_pixabay/ui/components/search_text_field_widget.dart';
+import 'package:basic_99_pixabay/ui/main_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../data/api/photo_api.dart';
 import '../data/model/photo.dart';
@@ -20,6 +22,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<MainViewModel>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Pixarbay Clone'),
@@ -33,12 +36,13 @@ class _MainScreenState extends State<MainScreen> {
               height: 50,
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: SearchTextFieldWidget(onTextChange: (query) {
-                  // debounce 처리
-                  setState(() {
-                    q = query;
-                  });
-                }),
+                child: SearchTextFieldWidget(
+                  onTextChange: (query) {
+                    viewModel.changeText(q, query);
+                  },
+                  // 여기서 에러
+                  // debounce: viewModel.debounce(),
+                ),
               ),
             ),
             const SizedBox(height: 30),
@@ -59,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
 
                   final photos = snapshot.data!;
 
-                  debugPrint(photos.length.toString());
+                  // debugPrint(photos.length.toString());
 
                   return Expanded(
                     child: Padding(

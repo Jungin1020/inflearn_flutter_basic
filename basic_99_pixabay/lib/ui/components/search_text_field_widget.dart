@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 class SearchTextFieldWidget extends StatefulWidget {
   final void Function(String query)? onTap;
   final void Function(String query)? onTextChange;
+  final void Function(Function callback)? debounce;
+  // final bool? isDebounced;
 
   const SearchTextFieldWidget({
     super.key,
     this.onTap,
     this.onTextChange,
+    this.debounce,
+    //this.isDebounced,
   });
 
   @override
@@ -18,22 +22,6 @@ class SearchTextFieldWidget extends StatefulWidget {
 
 class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
   final controller = TextEditingController();
-
-  // debounce를 적용할 시간 간격 (밀리초 단위)
-  final debounceDuration = const Duration(milliseconds: 500);
-
-  Timer? timer;
-
-  // debounce 기능을 구현한 함수
-  void debounce(Function() callback) {
-    if (timer != null) {
-      timer?.cancel();
-    }
-
-    timer = Timer(debounceDuration, () {
-      callback();
-    });
-  }
 
   @override
   void dispose() {
@@ -46,7 +34,10 @@ class _SearchTextFieldWidgetState extends State<SearchTextFieldWidget> {
     return TextField(
       controller: controller,
       onChanged: (query) {
-        debounce(() => widget.onTextChange?.call(query));
+        // if (isDebounced == true || isDebounced == null) {
+        //   widget.debounce.call(() => widget.onTextChange?.call(query));
+        // }
+        widget.onTextChange?.call(query);
       },
       decoration: InputDecoration(
         suffixIcon: IconButton(
