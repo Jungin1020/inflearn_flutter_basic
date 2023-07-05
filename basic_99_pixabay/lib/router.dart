@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 import 'package:basic_99_pixabay/ui/detail_screen.dart';
 import 'package:basic_99_pixabay/ui/main_screen.dart';

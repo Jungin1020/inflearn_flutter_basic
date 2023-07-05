@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   final api = PhotoApi();
 
   // final q = 'apple';
-  String q = 'apple';
+  String q = '';
 
   @override
   Widget build(BuildContext context) {
