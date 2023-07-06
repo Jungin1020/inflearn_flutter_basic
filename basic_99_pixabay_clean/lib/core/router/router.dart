@@ -1,5 +1,6 @@
 import 'package:basic_99_pixabay_clean/data/repository/pixabay_photo_repository_impl.dart';
 import 'package:basic_99_pixabay_clean/domain/model/photo.dart';
+import 'package:basic_99_pixabay_clean/domain/use_case/get_top_five_most_viewed_images_use_case.dart';
 import 'package:basic_99_pixabay_clean/presentation/main/main_screen.dart';
 import 'package:basic_99_pixabay_clean/presentation/main/main_view_model.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +16,8 @@ final router = GoRouter(
       path: '/main',
       builder: (context, state) {
         return ChangeNotifierProvider(
-            create: (_) => MainViewModel(PixabayPhotoRepositoryImpl()),
+            create: (_) => MainViewModel(
+                GetTopFiveMostViewedUseCase(PixabayPhotoRepositoryImpl())),
             child: const MainScreen());
       },
     ),
