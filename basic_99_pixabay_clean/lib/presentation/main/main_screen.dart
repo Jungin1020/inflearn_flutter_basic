@@ -48,7 +48,10 @@ class _MainScreenState extends State<MainScreen> {
                         onTap: () {
                           context.push('/detail', extra: photo);
                         },
-                        child: Image.network(photo.url, fit: BoxFit.cover));
+                        child: Hero(
+                            tag: photo.id,
+                            child:
+                                Image.network(photo.url, fit: BoxFit.cover)));
                   }))
         ],
       ),

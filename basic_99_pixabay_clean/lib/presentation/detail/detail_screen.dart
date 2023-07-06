@@ -14,9 +14,12 @@ class DetailScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Image.network(
-            photo.url,
-            fit: BoxFit.cover,
+          Hero(
+            tag: photo.id,
+            child: Image.network(
+              photo.url,
+              fit: BoxFit.cover,
+            ),
           )
         ],
       ),
