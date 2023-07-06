@@ -19,6 +19,11 @@ class MainViewModel with ChangeNotifier {
   MainState get state => _state;
 
   void fetchPhotos(String query) async {
+    if (query.isEmpty) {
+      _eventController.add(const ShowSnackBar('검색어를 입력해주세요.'));
+      return;
+    }
+
     _state = state.copyWith(isLoading: true);
     notifyListeners();
 
