@@ -8,14 +8,12 @@ class GetAllImagesUseCase {
   GetAllImagesUseCase(this._repository);
 
   Future<Result<List<Photo>>> execute(String query) async {
-    final result = await _repository.getPhotos(query);
+    try {
+      final photos = await _repository.getPhotos(query);
 
-    switch (result) {
-      case Success(:final data):
-        return Result.success(data);
-
-      case Error():
-        return result;
+      return Result.success(photos);
+    } catch (e) {
+      return const Result.error('네트워크 에러');
     }
   }
 }
