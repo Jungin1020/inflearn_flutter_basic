@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<MainViewModel>();
-    final _state = viewModel.state;
+    final state = viewModel.state;
 
     return Scaffold(
       appBar: AppBar(
@@ -44,13 +44,13 @@ class _MainScreenState extends State<MainScreen> {
               child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: GridView.builder(
-                itemCount: _state.photos.length,
+                itemCount: state.photos.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisSpacing: 2.0,
                     mainAxisSpacing: 2.0,
                     crossAxisCount: 3),
                 itemBuilder: (context, index) {
-                  final photo = _state.photos[index];
+                  final photo = state.photos[index];
                   return GestureDetector(
                       onTap: () {
                         context.push('/detail', extra: photo);
