@@ -1,5 +1,6 @@
 import 'package:basic_99_pixabay_clean/presentation/main/main_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
@@ -43,7 +44,11 @@ class _MainScreenState extends State<MainScreen> {
                       crossAxisCount: 3),
                   itemBuilder: (context, index) {
                     final photo = _state.photos[index];
-                    return Image.network(photo.url, fit: BoxFit.cover);
+                    return GestureDetector(
+                        onTap: () {
+                          context.push('/detail', extra: photo);
+                        },
+                        child: Image.network(photo.url, fit: BoxFit.cover));
                   }))
         ],
       ),

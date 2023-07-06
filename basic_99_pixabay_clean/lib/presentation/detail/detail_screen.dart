@@ -12,7 +12,14 @@ class DetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Detail'),
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          Image.network(
+            photo.url,
+            fit: BoxFit.cover,
+          )
+        ],
+      ),
     );
   }
 }
