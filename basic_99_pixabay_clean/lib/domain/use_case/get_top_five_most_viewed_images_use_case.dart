@@ -1,14 +1,23 @@
+import 'package:basic_99_pixabay_clean/core/result.dart';
+
 import '../model/photo.dart';
 import '../repository/photo_repository.dart';
 
 class GetTopFiveMostViewedUseCase {
   final PhotoRepository _repository;
+
   GetTopFiveMostViewedUseCase(this._repository);
 
-  Future<List<Photo>> execute(String query) async {
-    final photos = await _repository.getPhotos(query);
-    photos.sort((a, b) => b.views.compareTo(a.views));
+  Future<Result<List<Photo>>> execute(String query) async {
+    final result = await _repository.getPhotos(query);
 
-    return photos.take(5).toList();
+    switch (result) {
+      case Success(:final data):
+        data.sort((a, b) => b.views.compareTo(a.views));
+        return Result.success(data.take(5).toList());
+
+      case Error():
+        return result;
+    }
   }
 }

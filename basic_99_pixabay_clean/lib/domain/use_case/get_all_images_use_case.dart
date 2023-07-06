@@ -1,11 +1,21 @@
+import '../../core/result.dart';
 import '../model/photo.dart';
 import '../repository/photo_repository.dart';
 
-class GetTopFiveMostViewedUseCase {
+class GetAllImagesUseCase {
   final PhotoRepository _repository;
-  GetTopFiveMostViewedUseCase(this._repository);
 
-  Future<List<Photo>> execute(String query) async {
-    return await _repository.getPhotos(query);
+  GetAllImagesUseCase(this._repository);
+
+  Future<Result<List<Photo>>> execute(String query) async {
+    final result = await _repository.getPhotos(query);
+
+    switch (result) {
+      case Success(:final data):
+        return Result.success(data);
+
+      case Error():
+        return result;
+    }
   }
 }

@@ -5,6 +5,8 @@ import 'package:basic_99_pixabay_clean/presentation/main/main_state.dart';
 import 'package:basic_99_pixabay_clean/presentation/main/main_ui_event.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/result.dart';
+
 class MainViewModel with ChangeNotifier {
   final GetTopFiveMostViewedUseCase _getTopFiveMostViewedUseCase;
 
@@ -27,9 +29,21 @@ class MainViewModel with ChangeNotifier {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
 
-    _state = state.copyWith(
-        isLoading: true,
-        photos: await _getTopFiveMostViewedUseCase.execute(query));
+    final result = await _getTopFiveMostViewedUseCase.execute(query);
+
+    switch (result) {
+      case Success(:final data):
+        _state = state.copyWith(
+          isLoading: false,
+          photos: data,
+        );
+        notifyListeners();
+        _eventController.add(const EndLoading());
+
+      case Error(:final e):
+        _eventController.add(ShowSnackBar(e));
+    }
+
     notifyListeners();
   }
 }
