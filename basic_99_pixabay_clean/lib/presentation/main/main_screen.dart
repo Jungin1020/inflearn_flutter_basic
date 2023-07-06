@@ -25,34 +25,41 @@ class _MainScreenState extends State<MainScreen> {
       body: Column(
         children: [
           const SizedBox(height: 30),
-          TextField(
-            controller: controller,
-            decoration: InputDecoration(
-              suffixIcon: IconButton(
-                icon: const Icon(Icons.search_outlined),
-                onPressed: () {
-                  viewModel.fetchPhotos(controller.text);
-                },
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextField(
+              controller: controller,
+              decoration: InputDecoration(
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.search_outlined),
+                  onPressed: () {
+                    viewModel.fetchPhotos(controller.text);
+                  },
+                ),
               ),
             ),
           ),
           const SizedBox(height: 30),
           Expanded(
-              child: GridView.builder(
-                  itemCount: _state.photos.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemBuilder: (context, index) {
-                    final photo = _state.photos[index];
-                    return GestureDetector(
-                        onTap: () {
-                          context.push('/detail', extra: photo);
-                        },
-                        child: Hero(
-                            tag: photo.id,
-                            child:
-                                Image.network(photo.url, fit: BoxFit.cover)));
-                  }))
+              child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: GridView.builder(
+                itemCount: _state.photos.length,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisSpacing: 2.0,
+                    mainAxisSpacing: 2.0,
+                    crossAxisCount: 3),
+                itemBuilder: (context, index) {
+                  final photo = _state.photos[index];
+                  return GestureDetector(
+                      onTap: () {
+                        context.push('/detail', extra: photo);
+                      },
+                      child: Hero(
+                          tag: photo.id,
+                          child: Image.network(photo.url, fit: BoxFit.cover)));
+                }),
+          ))
         ],
       ),
     );
