@@ -1,5 +1,6 @@
 import 'package:basic_99_metro_clean_architecture/presentation/main/main_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -43,7 +44,8 @@ class MainScreen extends StatelessWidget {
                       final subwayIconColor =
                           subway.trainStatus == '일반' ? Colors.grey : Colors.red;
 
-                      return ListTile(
+                      return GestureDetector(
+                        child: ListTile(
                           leading: Icon(Icons.subway, color: subwayIconColor),
                           trailing: Icon(
                             Icons.chevron_right_outlined,
@@ -64,7 +66,12 @@ class MainScreen extends StatelessWidget {
                                 ),
                               )
                             ],
-                          ));
+                          ),
+                        ),
+                        onTap: () {
+                          context.push('/detail', extra: subway);
+                        },
+                      );
                     }))
           ],
         ),

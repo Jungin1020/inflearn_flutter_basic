@@ -1,4 +1,5 @@
 import 'package:basic_99_metro_clean_architecture/data/repository/seoul_subway_repository_impl.dart';
+import 'package:basic_99_metro_clean_architecture/domain/model/subway.dart';
 import 'package:basic_99_metro_clean_architecture/domain/usecase/get_two_closest_subways_usecase.dart';
 import 'package:basic_99_metro_clean_architecture/presentation/detail/detail_screen.dart';
 import 'package:basic_99_metro_clean_architecture/presentation/main/main_screen.dart';
@@ -22,7 +23,8 @@ final router = GoRouter(
     GoRoute(
       path: '/detail',
       builder: (context, state) {
-        return const DetailScreen();
+        final subway = state.extra as Subway;
+        return DetailScreen(subway: subway);
       },
     ),
   ],
