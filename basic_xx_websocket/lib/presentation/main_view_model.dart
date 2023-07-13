@@ -12,9 +12,10 @@ class MainViewModel with ChangeNotifier {
 
   List<Price> get prices => List.unmodifiable(_prices);
 
-  MainViewModel(this._priceRepository) {
-    fetch();
-  }
+  MainViewModel(this._priceRepository);
+  // MainViewModel(this._priceRepository) {
+  //   fetch();
+  // }
 
   void fetch() {
     _subscription = _priceRepository.getPriceStream().listen((price) {

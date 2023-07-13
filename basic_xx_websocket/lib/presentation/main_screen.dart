@@ -12,8 +12,21 @@ class MainScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('How to Use WebSocket'),
       ),
-      body: ListView(
-        children: viewModel.prices.map((e) => Text(e.toString())).toList(),
+      body: Column(
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              viewModel.fetch();
+            },
+            child: const Text('Go!'),
+          ),
+          Expanded(
+            child: ListView(
+              children:
+                  viewModel.prices.map((e) => Text(e.toString())).toList(),
+            ),
+          ),
+        ],
       ),
     );
   }
