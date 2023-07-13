@@ -32,6 +32,7 @@ class MainScreen extends StatelessWidget {
                   },
                 ),
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
             Expanded(
@@ -46,10 +47,24 @@ class MainScreen extends StatelessWidget {
 
                       return GestureDetector(
                         child: ListTile(
-                          leading: Icon(Icons.subway, color: subwayIconColor),
-                          trailing: Icon(
-                            Icons.chevron_right_outlined,
-                            color: Colors.grey.shade400,
+                          leading: SizedBox(
+                            height: 42,
+                            child: Column(
+                              children: [
+                                Icon(Icons.subway, color: subwayIconColor),
+                              ],
+                            ),
+                          ),
+                          trailing: SizedBox(
+                            height: 42,
+                            child: Column(
+                              children: [
+                                Icon(
+                                  Icons.chevron_right_outlined,
+                                  color: Colors.grey.shade400,
+                                ),
+                              ],
+                            ),
                           ),
                           title: Row(
                             children: [
@@ -66,6 +81,11 @@ class MainScreen extends StatelessWidget {
                                 ),
                               )
                             ],
+                          ),
+                          subtitle: Text(
+                            subway.trainStatusMsg,
+                            style: TextStyle(
+                                color: Colors.grey.shade400, fontSize: 12.0),
                           ),
                         ),
                         onTap: () {
