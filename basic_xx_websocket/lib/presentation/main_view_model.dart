@@ -6,13 +6,15 @@ import '../domain/model/price.dart';
 class MainViewModel with ChangeNotifier {
   final PriceRepository _priceRepository;
 
-  MainViewModel(this._priceRepository);
-
   StreamSubscription<Price>? _subscription;
 
   final List<Price> _prices = [];
 
   List<Price> get prices => List.unmodifiable(_prices);
+
+  MainViewModel(this._priceRepository) {
+    fetch();
+  }
 
   void fetch() {
     _subscription = _priceRepository.getPriceStream().listen((price) {
