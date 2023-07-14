@@ -8,6 +8,9 @@ class MainViewModel with ChangeNotifier {
 
   StreamSubscription<Price>? _subscription;
 
+  bool _isStreamPaused = false;
+  bool get isStreamPaused => _isStreamPaused;
+
   final List<Price> _prices = [];
 
   List<Price> get prices => List.unmodifiable(_prices);
@@ -22,6 +25,16 @@ class MainViewModel with ChangeNotifier {
       _prices.add(price);
       notifyListeners();
     });
+  }
+
+  void pauseResumeStream() {
+    _isStreamPaused = !_isStreamPaused;
+    if (_isStreamPaused == true) {
+      _subscription?.pause();
+    } else {
+      _subscription?.resume();
+    }
+    notifyListeners();
   }
 
   @override
