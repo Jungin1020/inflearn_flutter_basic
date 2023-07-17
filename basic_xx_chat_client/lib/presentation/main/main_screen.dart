@@ -25,7 +25,17 @@ class _MainScreenState extends State<MainScreen> {
     final viewModel = context.watch<MainViewModel>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chatting Room'),
+        title: const Text(
+          'Chatting App',
+          style: TextStyle(fontSize: 18),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.settings_outlined),
+          ),
+          // const SizedBox(width: 10)
+        ],
       ),
       body: Column(
         children: [
@@ -43,52 +53,38 @@ class _MainScreenState extends State<MainScreen> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Center(
-                                    child: AnimatedContainer(
-                                      height: 45,
-                                      decoration: BoxDecoration(
-                                        color: Colors.grey.shade100,
-                                        borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(20),
-                                          topRight: Radius.circular(20),
-                                          bottomLeft: Radius.circular(20),
-                                        ),
-                                      ),
-                                      padding: const EdgeInsets.all(10),
-                                      duration: const Duration(seconds: 1),
-                                      curve: Curves.easeInOut,
-                                      child: Text(
-                                        e.message,
-                                      ),
-                                    ),
+                                  Text(
+                                    '${DateTime.now().hour.toString()}:${DateTime.now().minute.toString()}',
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: Colors.grey.shade400),
                                   ),
+                                  const SizedBox(height: 5)
                                 ],
                               ),
-                              const SizedBox(width: 10),
-                              CircleAvatar(
-                                radius: 18,
-                                backgroundColor: Colors.grey,
-                                child: CircleAvatar(
-                                  radius: 16,
-                                  backgroundColor: Colors.grey.shade200,
-                                  // foregroundColor: Colors.white,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const SizedBox(
-                                        height: 0.5,
-                                      ),
-                                      Text('정인',
-                                          style: TextStyle(
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.grey.shade600,
-                                          )),
-                                    ],
+                              const SizedBox(width: 5),
+                              Center(
+                                child: AnimatedContainer(
+                                  height: 45,
+                                  decoration: const BoxDecoration(
+                                    color: Colors.teal,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                      bottomLeft: Radius.circular(20),
+                                    ),
+                                  ),
+                                  padding: const EdgeInsets.all(10),
+                                  duration: const Duration(seconds: 1),
+                                  curve: Curves.easeInOut,
+                                  child: Text(
+                                    e.message,
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                                 ),
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -107,20 +103,24 @@ class _MainScreenState extends State<MainScreen> {
               child: TextField(
                 controller: messageTextController,
                 decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                    hintText: '메세지를 입력하세요',
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(40))),
-                    suffixIcon: IconButton(
-                      icon: const Icon(Icons.send_outlined),
-                      onPressed: () {
-                        viewModel.sendMessage(
-                          nameTextController.text,
-                          messageTextController.text,
-                        );
-                        messageTextController.clear();
-                      },
-                    )),
+                  filled: true,
+                  fillColor: Colors.white,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+                  hintText: '메세지를 입력하세요',
+                  border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(40)),
+                      borderSide: BorderSide.none),
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.send),
+                    onPressed: () {
+                      viewModel.sendMessage(
+                        nameTextController.text,
+                        messageTextController.text,
+                      );
+                      messageTextController.clear();
+                    },
+                  ),
+                ),
               ),
             ),
           ),
