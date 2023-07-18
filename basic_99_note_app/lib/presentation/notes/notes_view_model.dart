@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../../domain/model/note.dart';
 
-class NoteViewModel with ChangeNotifier {
+class NotesViewModel with ChangeNotifier {
   final NoteRepository repository;
 
   NotesState _state = NotesState(notes: []);
@@ -14,7 +14,7 @@ class NoteViewModel with ChangeNotifier {
 
   Note? _recentlyDeletedNote;
 
-  NoteViewModel(this.repository);
+  NotesViewModel(this.repository);
 
   void onEvent(NotesEvent event) {
     event.when(
