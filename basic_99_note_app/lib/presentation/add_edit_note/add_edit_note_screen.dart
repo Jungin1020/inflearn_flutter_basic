@@ -1,8 +1,16 @@
+import 'package:basic_99_note_app/presentation/add_edit_note/add_edit_note_view_model.dart';
 import 'package:basic_99_note_app/ui/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../domain/model/note.dart';
+import 'add_edit_note_event.dart';
+import 'add_edit_note_ui_event.dart';
 
 class AddEditNoteScreen extends StatefulWidget {
-  AddEditNoteScreen({Key? key}) : super(key: key);
+  final Note? note;
+
+  const AddEditNoteScreen({Key? key, this.note}) : super(key: key);
 
   @override
   State<AddEditNoteScreen> createState() => _AddEditNoteScreenState();
@@ -20,7 +28,36 @@ class _AddEditNoteScreenState extends State<AddEditNoteScreen> {
     illusion,
   ];
 
-  Color _color = roseBub;
+  // Color _color = roseBub;
+
+  @override
+  void initState() {
+    super.initState();
+
+    if (widget.note != null) {
+      _titleController.text = widget.note!.title;
+      _contentController.text = widget.note!.content;
+    }
+
+    Future.microtask(() {
+      final viewModel = context.read<AddEditNoteViewModel>();
+
+      viewModel.eventStream.listen((event) {
+        // event.when(
+        //   pressSaveNoteButton: () {
+        //     Navigator.pop(context, true);
+        //   },
+        // );
+        switch (event) {
+          case PressSaveNoteButton():
+            Navigator.pop(context, true);
+          case ShowSnackBar(:final message):
+            final snackBar = SnackBar(content: Text(message));
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        }
+      });
+    });
+  }
 
   @override
   void dispose() {
@@ -31,13 +68,20 @@ class _AddEditNoteScreenState extends State<AddEditNoteScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<AddEditNoteViewModel>();
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          viewModel.onEvent(AddEditNoteEvent.saveNote(
+            widget.note == null ? null : widget.note!.id, // 복잡한 문법...
+            _titleController.text,
+            _contentController.text,
+          ));
+        },
         child: const Icon(Icons.save),
       ),
       body: AnimatedContainer(
-        color: _color,
+        color: Color(viewModel.color),
         duration: const Duration(milliseconds: 500),
         child: Padding(
           padding: const EdgeInsets.only(left: 16, right: 16, top: 64),
@@ -49,13 +93,11 @@ class _AddEditNoteScreenState extends State<AddEditNoteScreen> {
                     .map(
                       (color) => InkWell(
                         child: _buildBackgroundColor(
-                            color: color, selected: _color == color),
+                            color: color,
+                            selected: viewModel.color == color.value),
                         onTap: () {
-                          setState(
-                            () {
-                              _color = color;
-                            },
-                          );
+                          viewModel.onEvent(
+                              AddEditNoteEvent.changeColor(color.value));
                         },
                       ),
                     )
