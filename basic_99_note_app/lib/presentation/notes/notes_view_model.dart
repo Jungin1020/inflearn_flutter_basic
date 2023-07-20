@@ -8,20 +8,31 @@ import '../../domain/model/note.dart';
 class NotesViewModel with ChangeNotifier {
   final NoteRepository repository;
 
-  NotesState _state = NotesState(notes: []);
+  NotesState _state = const NotesState(notes: []);
 
   NotesState get state => _state;
 
   Note? _recentlyDeletedNote;
 
-  NotesViewModel(this.repository);
+  NotesViewModel(this.repository) {
+    _loadNotes();
+  }
 
   void onEvent(NotesEvent event) {
-    event.when(
-      loadNotes: _loadNotes,
-      deleteNotes: _deleteNote,
-      restoreNotes: _restoreNote,
-    );
+    // event.when(
+    //   loadNotes: _loadNotes,
+    //   deleteNotes: _deleteNote,
+    //   restoreNotes: _restoreNote,
+    // );
+
+    switch (event) {
+      case LoadNotes():
+        _loadNotes();
+      case DeleteNotes():
+        _deleteNote(event.note);
+      case RestoreNotes():
+        _restoreNote();
+    }
   }
 
   Future<void> _loadNotes() async {

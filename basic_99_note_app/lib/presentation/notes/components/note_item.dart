@@ -7,7 +7,8 @@ class NoteItem extends StatelessWidget {
   final Note note;
   final Function? onDeleteTap;
 
-  NoteItem({Key? key, required this.note, this.onDeleteTap}) : super(key: key);
+  const NoteItem({Key? key, required this.note, this.onDeleteTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class NoteItem extends StatelessWidget {
       child: Stack(
         children: [
           Container(
+            width: double.infinity,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -25,8 +27,7 @@ class NoteItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  // note.title,
-                  '0000000000000000000000000000000000000000000',
+                  note.title,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.headlineSmall,
@@ -48,7 +49,7 @@ class NoteItem extends StatelessWidget {
               onTap: () {
                 onDeleteTap?.call();
               },
-              child: Icon(
+              child: const Icon(
                 Icons.delete,
                 color: darkGrey,
               ),
