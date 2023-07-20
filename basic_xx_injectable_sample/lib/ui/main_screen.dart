@@ -1,3 +1,4 @@
+import 'package:basic_xx_get_it_sample/di/di_setup.dart';
 import 'package:basic_xx_get_it_sample/ui/main_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
     final viewModel = context.watch<MainViewModel>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main Screen'),
+        title: Text(getIt<String>()),
       ),
       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
