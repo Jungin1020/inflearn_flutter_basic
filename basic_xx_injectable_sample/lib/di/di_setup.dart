@@ -32,4 +32,4 @@ import 'di_setup.config.dart';
 final getIt = GetIt.instance;
 
 @InjectableInit()
-void configureDependencies() => getIt.init(environment: Environment.dev);
+void configureDependencies() => getIt.init();
