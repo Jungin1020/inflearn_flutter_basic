@@ -1,12 +1,13 @@
-import 'package:basic_99_note_app/domain/model/note.dart';
 import 'package:basic_99_note_app/domain/repository/note_repository.dart';
 
-class AddNote {
+import '../model/note.dart';
+
+class DeleteNoteUseCase {
   final NoteRepository repository;
 
-  AddNote(this.repository);
+  DeleteNoteUseCase(this.repository);
 
   Future<void> call(Note note) async {
-    await repository.insertNote(note);
+    await repository.deleteNote(note);
   }
 }

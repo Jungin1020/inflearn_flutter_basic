@@ -32,11 +32,13 @@ class _NotesScreenState extends State<NotesScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          await Navigator.push(
+          bool? isSaved = await Navigator.push(
               context,
               MaterialPageRoute(
                   builder: (context) => const AddEditNoteScreen()));
-          viewModel.onEvent(const NotesEvent.loadNotes());
+          if (isSaved != null && isSaved) {
+            viewModel.onEvent(const NotesEvent.loadNotes());
+          }
         },
         child: const Icon(Icons.add),
       ),
@@ -46,13 +48,15 @@ class _NotesScreenState extends State<NotesScreen> {
             .map(
               (note) => GestureDetector(
                 onTap: () async {
-                  await Navigator.push(
+                  bool? isSaved = await Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (context) => AddEditNoteScreen(
                                 note: note,
                               )));
-                  // viewModel.onEvent(const NotesEvent.loadNotes());
+                  if (isSaved != null && isSaved) {
+                    viewModel.onEvent(const NotesEvent.loadNotes());
+                  }
                 },
                 child: NoteItem(
                   note: note,

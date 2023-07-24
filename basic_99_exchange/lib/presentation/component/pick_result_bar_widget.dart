@@ -1,7 +1,9 @@
+import 'package:basic_99_exchange/presentation/component/buildCountryPicker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class SearchResultBarWidget extends StatelessWidget {
-  const SearchResultBarWidget({super.key});
+class PickResultBarWidget extends StatelessWidget {
+  const PickResultBarWidget({super.key});
 
   // const SearchResultBarWidget({
   //   super.key,
@@ -46,14 +48,31 @@ class SearchResultBarWidget extends StatelessWidget {
           //   ),
           // ),
         ),
-        const Row(
-          children: [
-            Text(
-              '대한민국 원',
-              style: TextStyle(fontSize: 16),
-            ),
-            Icon(Icons.arrow_drop_down),
-          ],
+        GestureDetector(
+          child: const Row(
+            children: [
+              Text(
+                '대한민국 원',
+                style: TextStyle(fontSize: 16),
+              ),
+              Icon(Icons.arrow_drop_down),
+            ],
+          ),
+          onTap: () {
+            showCupertinoModalPopup(
+              context: context,
+              builder: (context) => CupertinoActionSheet(
+                actions: [buildCountryPicker()],
+                cancelButton: CupertinoActionSheetAction(
+                  child: const Text(
+                    'Cancel',
+                    style: TextStyle(color: CupertinoColors.activeBlue),
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ),
+            );
+          },
         )
       ],
     );
