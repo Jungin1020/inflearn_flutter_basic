@@ -8,8 +8,7 @@ class ExchangeDtoResult {
     this.timeNextUpdateUnix,
     this.timeNextUpdateUtc,
     this.baseCode,
-    this.targetCode,
-    this.conversionRate,
+    this.conversionRates,
   });
 
   ExchangeDtoResult.fromJson(dynamic json) {
@@ -21,9 +20,9 @@ class ExchangeDtoResult {
     timeNextUpdateUnix = json['time_next_update_unix'];
     timeNextUpdateUtc = json['time_next_update_utc'];
     baseCode = json['base_code'];
-    targetCode = json['target_code'];
-    conversionRate = json['conversion_rate'];
+    conversionRates = json['conversion_rates'];
   }
+
   String? result;
   String? documentation;
   String? termsOfUse;
@@ -32,8 +31,7 @@ class ExchangeDtoResult {
   num? timeNextUpdateUnix;
   String? timeNextUpdateUtc;
   String? baseCode;
-  String? targetCode;
-  num? conversionRate;
+  Map<String, dynamic>? conversionRates;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -45,8 +43,7 @@ class ExchangeDtoResult {
     map['time_next_update_unix'] = timeNextUpdateUnix;
     map['time_next_update_utc'] = timeNextUpdateUtc;
     map['base_code'] = baseCode;
-    map['target_code'] = targetCode;
-    map['conversion_rate'] = conversionRate;
+    map['conversion_rates'] = conversionRates;
     return map;
   }
 }

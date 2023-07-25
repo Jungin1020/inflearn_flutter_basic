@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 
-final countries = [
-  'Country 1',
-  'Country 2',
-  'Country 3',
-  'Country 4',
-  'Country 5',
-];
+// final countries = [
+//   'Country 1',
+//   'Country 2',
+//   'Country 3',
+//   'Country 4',
+//   'Country 5',
+// ];
 
-Widget buildCountryPicker() => SizedBox(
+Widget buildCountryPicker(List<String> countries) => SizedBox(
       height: 350,
       child: CupertinoPicker(
         onSelectedItemChanged: (int index) {},

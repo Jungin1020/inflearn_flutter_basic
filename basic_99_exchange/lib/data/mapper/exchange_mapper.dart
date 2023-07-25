@@ -8,8 +8,7 @@ extension ToExchangeModel on ExchangeDtoResult {
       lastUpdate: timeLastUpdateUtc ?? '',
       nextUpdate: timeNextUpdateUtc ?? '',
       baseCode: baseCode ?? '',
-      targetCode: targetCode ?? '',
-      conversionRate: conversionRate ?? 0,
+      conversionRates: conversionRates ?? {},
     );
   }
 }

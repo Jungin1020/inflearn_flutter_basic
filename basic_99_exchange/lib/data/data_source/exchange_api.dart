@@ -6,10 +6,8 @@ import 'package:http/http.dart' as http;
 class ExchangeApi {
   final _myKey = '0bf51200bbc460307f7f04a9';
 
-  Future<ExchangeDtoResult> getExchangeDto(
-      String baseCode, String targetCode) async {
-    final url =
-        'https://v6.exchangerate-api.com/v6/$_myKey/pair/$baseCode/$targetCode';
+  Future<ExchangeDtoResult> getExchangeDto(String baseCode) async {
+    final url = 'https://v6.exchangerate-api.com/v6/$_myKey/latest/$baseCode';
 
     final response = await http.get(Uri.parse(url));
     final jsonMap = jsonDecode(response.body);

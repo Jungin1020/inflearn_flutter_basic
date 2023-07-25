@@ -12,8 +12,7 @@ class ExchangeModel with _$ExchangeModel {
     required String lastUpdate,
     required String nextUpdate,
     required String baseCode,
-    required String targetCode,
-    required num conversionRate,
+    required Map<String, dynamic> conversionRates,
   }) = _ExchangeModel;
 
   factory ExchangeModel.fromJson(Map<String, Object?> json) =>

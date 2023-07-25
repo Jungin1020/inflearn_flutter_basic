@@ -4,8 +4,8 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('api에서 데이터가 잘 들어오는지 확인', () async {
     final api = ExchangeApi();
-    final result = await api.getExchangeDto('USD', 'KWD');
+    final result = await api.getExchangeDto('USD');
 
-    expect(result.conversionRate, 0.3068);
+    expect(result.conversionRates!['AED'], 3.6725);
   });
 }

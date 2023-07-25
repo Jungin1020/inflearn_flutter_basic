@@ -1,4 +1,6 @@
+import 'package:basic_99_exchange/presentation/main/main_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../component/pick_result_bar_widget.dart';
 
@@ -14,6 +16,12 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<MainViewModel>();
+    final state = viewModel.state;
+
+    final countries = state.exchanges.keys.toList();
+    // viewModel.fetchExchanges(state.baseCountry);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -67,13 +75,15 @@ class _MainScreenState extends State<MainScreen> {
                         'https://www.exchangerate-api.com/img/brochure/saas-1-edit-cc.png'),
                   ),
                   const SizedBox(height: 64),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Column(
                       children: [
-                        PickResultBarWidget(),
-                        SizedBox(height: 24),
-                        PickResultBarWidget(),
+                        PickResultBarWidget(
+                            countries: countries, country: state.baseCountry),
+                        const SizedBox(height: 24),
+                        PickResultBarWidget(
+                            countries: countries, country: state.baseCountry),
                       ],
                     ),
                   ),
