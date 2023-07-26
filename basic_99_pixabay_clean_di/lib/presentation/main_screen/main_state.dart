@@ -10,6 +10,7 @@ part 'main_state.g.dart';
 @freezed
 class MainState with _$MainState {
   const factory MainState({
+    @Default(false) bool isLoading,
     @Default([]) List<Photo> photos,
   }) = _MainState;
 
