@@ -1,8 +1,10 @@
+import 'package:basic_99_pixabay_clean_di/core/di/di_setup.dart';
 import 'package:flutter/material.dart';
 
 import 'core/router.dart';
 
-void main() {
+void main() async {
+  configureDependencies();
   runApp(const MyApp());
 }
 

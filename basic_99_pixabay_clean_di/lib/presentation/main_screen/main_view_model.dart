@@ -1,22 +1,25 @@
 import 'dart:async';
 
-import 'package:basic_99_pixabay_clean_di/domain/repository/photo_repository.dart';
 import 'package:basic_99_pixabay_clean_di/domain/usecase/get_five_photos_use_case.dart';
 import 'package:basic_99_pixabay_clean_di/presentation/main_screen/main_ui_event.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../core/result.dart';
 import 'main_state.dart';
 
+@injectable
 class MainViewModel with ChangeNotifier {
   final GetFivePhotosUseCase getFivePhotosUseCase;
 
   final _eventController = StreamController<MainUiEvent>();
+
   Stream<MainUiEvent> get eventStream => _eventController.stream;
 
   MainState _state = const MainState();
 
   MainViewModel(this.getFivePhotosUseCase);
+
   MainState get state => _state;
 
   void fetchPhotos(String query) async {

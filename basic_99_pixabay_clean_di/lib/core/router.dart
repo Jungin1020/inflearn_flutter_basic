@@ -1,14 +1,15 @@
-import 'package:basic_99_pixabay_clean_di/data/repository/pixabay_repository_impl.dart';
+import 'package:basic_99_pixabay_clean_di/core/di/di_setup.dart';
 import 'package:basic_99_pixabay_clean_di/domain/model/photo.dart';
-import 'package:basic_99_pixabay_clean_di/domain/usecase/get_five_photos_use_case.dart';
 import 'package:basic_99_pixabay_clean_di/presentation/detail_screen/detail_screen.dart';
 import 'package:basic_99_pixabay_clean_di/presentation/main_screen/main_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:injectable/injectable.dart';
 import 'package:provider/provider.dart';
 
 import '../presentation/main_screen/main_view_model.dart';
 
 // GoRouter configuration
+@singleton
 final router = GoRouter(
   initialLocation: '/main',
   routes: [
@@ -17,8 +18,9 @@ final router = GoRouter(
       builder: (context, state) {
         return ChangeNotifierProvider(
           create: (_) =>
-              MainViewModel(GetFivePhotosUseCase(PixabayRepositoryImpl())),
-          child: MainScreen(),
+              // MainViewModel(GetFivePhotosUseCase(PixabayRepositoryImpl())),
+              getIt<MainViewModel>(),
+          child: const MainScreen(),
         );
       },
     ),

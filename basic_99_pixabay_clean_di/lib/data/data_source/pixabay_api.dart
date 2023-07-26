@@ -1,8 +1,11 @@
 import 'dart:convert';
 
+import 'package:injectable/injectable.dart';
+
 import '../dto/photo_result_dto.dart';
 import 'package:http/http.dart' as http;
 
+@singleton
 class PixabayApi {
   final _myKey = '37903563-6461cb0081fd824b159c4d78b';
 

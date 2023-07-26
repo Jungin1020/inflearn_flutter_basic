@@ -1,8 +1,10 @@
 import 'package:basic_99_pixabay_clean_di/core/result.dart';
+import 'package:injectable/injectable.dart';
 
 import '../model/photo.dart';
 import '../repository/photo_repository.dart';
 
+@singleton
 class GetFivePhotosUseCase {
   final PhotoRepository _repository;
   GetFivePhotosUseCase(this._repository);
