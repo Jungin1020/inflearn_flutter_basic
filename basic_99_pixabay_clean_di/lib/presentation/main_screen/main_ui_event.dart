@@ -6,5 +6,6 @@ part 'main_ui_event.freezed.dart';
 @freezed
 sealed class MainUiEvent with _$MainUiEvent {
   const factory MainUiEvent.showSnackBar(String message) = ShowSnackbar;
+
   const factory MainUiEvent.endLoading() = EndLoading;
 }
