@@ -1,7 +1,6 @@
-import 'package:basic_99_pixabay_clean_di/router/router.dart';
 import 'package:flutter/material.dart';
 
-import 'presentation/main_screen/main_screen.dart';
+import 'core/router.dart';
 
 void main() {
   runApp(const MyApp());
