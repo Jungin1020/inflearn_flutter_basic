@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import 'main_view_model.dart';
@@ -47,9 +48,17 @@ class MainScreen extends StatelessWidget {
                       crossAxisCount: 3),
                   itemBuilder: (context, index) {
                     final photo = state.photos[index];
-                    return Image.network(
-                      photo.webFormatUrl,
-                      fit: BoxFit.cover,
+                    return GestureDetector(
+                      onTap: () {
+                        context.push('/detail', extra: photo);
+                      },
+                      child: Hero(
+                        tag: photo.id,
+                        child: Image.network(
+                          photo.webFormatUrl,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     );
                   }),
             )
