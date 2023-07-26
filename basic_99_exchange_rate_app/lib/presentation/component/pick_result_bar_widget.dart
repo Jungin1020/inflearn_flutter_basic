@@ -3,9 +3,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PickResultBarWidget extends StatelessWidget {
-  const PickResultBarWidget(
-      {super.key, required this.countries, required this.country});
+  final Function(String country) onPicked;
+
+  const PickResultBarWidget({
+    super.key,
+    required this.countries,
+    required this.country,
+    required this.onPicked,
+  });
+
   final List<String> countries;
+
   // final _controller = TextEditingController(text: 'USD');
   final String country;
 
@@ -54,7 +62,12 @@ class PickResultBarWidget extends StatelessWidget {
             showCupertinoModalPopup(
               context: context,
               builder: (context) => CupertinoActionSheet(
-                actions: [buildCountryPicker(countries)],
+                actions: [
+                  buildCountryPicker(
+                    countries,
+                    (country) => onPicked(country),
+                  ),
+                ],
                 cancelButton: CupertinoActionSheetAction(
                   child: const Text(
                     'Cancel',

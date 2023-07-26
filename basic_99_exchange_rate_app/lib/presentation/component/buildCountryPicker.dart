@@ -8,10 +8,16 @@ import 'package:flutter/cupertino.dart';
 //   'Country 5',
 // ];
 
-Widget buildCountryPicker(List<String> countries) => SizedBox(
+Widget buildCountryPicker(
+  List<String> countries,
+  Function(String country) callback,
+) =>
+    SizedBox(
       height: 350,
       child: CupertinoPicker(
-        onSelectedItemChanged: (int index) {},
+        onSelectedItemChanged: (int index) {
+          callback(countries[index]);
+        },
         itemExtent: 64,
         children: countries
             .map(
