@@ -1,4 +1,4 @@
-import 'package:basic_99_exchange/presentation/component/buildCountryPicker.dart';
+import 'package:basic_99_exchange/presentation/component/build_country_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

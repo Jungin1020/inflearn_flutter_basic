@@ -1,13 +1,5 @@
 import 'package:flutter/cupertino.dart';
 
-// final countries = [
-//   'Country 1',
-//   'Country 2',
-//   'Country 3',
-//   'Country 4',
-//   'Country 5',
-// ];
-
 Widget buildCountryPicker(
   List<String> countries,
   Function(String country) callback,
