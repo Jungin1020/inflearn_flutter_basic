@@ -21,4 +21,18 @@ class MainViewModel with ChangeNotifier {
     _state = state.copyWith(exchanges: exchanges);
     notifyListeners();
   }
+
+  void onChangeBaseCountry(String country) {
+    _state = state.copyWith(
+      baseCountry: country,
+    );
+    notifyListeners();
+  }
+
+  void onChangeTargetCountry(String country) {
+    // _state = state.copyWith(
+    //   baseCountry: country,
+    // );
+    // notifyListeners();
+  }
 }

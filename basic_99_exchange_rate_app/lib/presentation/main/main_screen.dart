@@ -80,10 +80,16 @@ class _MainScreenState extends State<MainScreen> {
                     child: Column(
                       children: [
                         PickResultBarWidget(
-                            countries: countries, country: state.baseCountry),
+                          countries: countries,
+                          country: state.baseCountry,
+                          onPicked: (country) => viewModel.onChangeBaseCountry(country),
+                        ),
                         const SizedBox(height: 24),
                         PickResultBarWidget(
-                            countries: countries, country: state.baseCountry),
+                          countries: countries,
+                          country: state.baseCountry,
+                          onPicked: viewModel.onChangeTargetCountry,
+                        ),
                       ],
                     ),
                   ),
