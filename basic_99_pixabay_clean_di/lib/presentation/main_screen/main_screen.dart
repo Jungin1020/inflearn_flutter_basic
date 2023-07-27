@@ -1,5 +1,6 @@
 import 'package:basic_99_pixabay_clean_di/presentation/main_screen/main_ui_event.dart';
 import 'package:flutter/material.dart';
+import 'package:basic_99_pixabay_clean_di/core/di/di_setup.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +40,7 @@ class _MainScreenState extends State<MainScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pixabay Clean DI'),
+        title: Text(getIt<String>()),
       ),
       body: SafeArea(
           child: Center(
