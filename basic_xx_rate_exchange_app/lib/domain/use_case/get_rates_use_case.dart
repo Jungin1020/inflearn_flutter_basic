@@ -1,8 +1,10 @@
 import 'package:basic_xx_rate_exchange_app/core/result.dart';
 import 'package:basic_xx_rate_exchange_app/domain/repository/rates_repository.dart';
+import 'package:injectable/injectable.dart';
 
 import '../model/rates_result.dart';
 
+@singleton
 class GetRatesUseCase {
   final RatesRepository _repository;
 
