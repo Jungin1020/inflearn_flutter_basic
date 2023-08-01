@@ -65,7 +65,10 @@ class MainViewModel with ChangeNotifier {
 
     switch (result) {
       case Success(:final data):
-        _state = state.copyWith(rates: data.rates, isLoading: false);
+        _state = state.copyWith(
+            lastUpdateTime: data.lastUpdateTime,
+            rates: data.rates,
+            isLoading: false);
         notifyListeners();
       case Error(:final e):
         print(e);

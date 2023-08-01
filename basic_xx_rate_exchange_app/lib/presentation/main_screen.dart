@@ -12,12 +12,10 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final _baseMoneyController = TextEditingController();
-  final _targetMoneyController = TextEditingController();
-
   // @override
   // void initState() {
   //   super.initState();
+  //   WidgetsFlutterBinding.ensureInitialized();
   //   Future.microtask(() {
   //     final viewModel = context.read<MainViewModel>();
   //
@@ -26,26 +24,9 @@ class _MainScreenState extends State<MainScreen> {
   // }
 
   @override
-  void dispose() {
-    _baseMoneyController.dispose();
-    _targetMoneyController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<MainViewModel>();
     final state = viewModel.state;
-
-    _baseMoneyController.text = state.baseMoney.toString();
-    _targetMoneyController.text = state.targetMoney.toString();
-
-    _baseMoneyController.selection = TextSelection.fromPosition(
-        TextPosition(offset: _baseMoneyController.text.length));
-    _targetMoneyController.selection = TextSelection.fromPosition(
-        TextPosition(offset: _targetMoneyController.text.length));
-
-    // final countries = state.exchanges.keys.toList();
 
     return Scaffold(
       body: SafeArea(
@@ -104,8 +85,6 @@ class _MainScreenState extends State<MainScreen> {
                     child: Column(
                       children: [
                         InputSelectMoneyCodeWidget(
-                          baseMoneyController: _baseMoneyController,
-                          targetMoneyController: _targetMoneyController,
                           viewModel: viewModel,
                           state: state,
                         )

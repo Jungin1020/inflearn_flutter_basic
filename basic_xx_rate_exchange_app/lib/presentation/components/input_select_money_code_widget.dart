@@ -5,23 +5,48 @@ import '../main_event.dart';
 import '../main_state.dart';
 import '../main_view_model.dart';
 
-class InputSelectMoneyCodeWidget extends StatelessWidget {
+class InputSelectMoneyCodeWidget extends StatefulWidget {
   const InputSelectMoneyCodeWidget({
     super.key,
-    required TextEditingController baseMoneyController,
-    required TextEditingController targetMoneyController,
     required this.viewModel,
     required this.state,
-  })  : _baseMoneyController = baseMoneyController,
-        _targetMoneyController = targetMoneyController;
+  });
 
-  final TextEditingController _baseMoneyController;
-  final TextEditingController _targetMoneyController;
   final MainViewModel viewModel;
   final MainState state;
 
   @override
+  State<InputSelectMoneyCodeWidget> createState() =>
+      _InputSelectMoneyCodeWidgetState();
+}
+
+class _InputSelectMoneyCodeWidgetState
+    extends State<InputSelectMoneyCodeWidget> {
+  final _baseMoneyController = TextEditingController();
+  final _targetMoneyController = TextEditingController();
+  FixedExtentScrollController _baseScrollController =
+      FixedExtentScrollController();
+  FixedExtentScrollController _targetScrollController =
+      FixedExtentScrollController();
+
+  @override
+  void dispose() {
+    _baseMoneyController.dispose();
+    _targetMoneyController.dispose();
+    _baseScrollController.dispose();
+    _targetScrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    _baseMoneyController.text = widget.state.baseMoney.toString();
+    _targetMoneyController.text = widget.state.targetMoney.toString();
+
+    _baseMoneyController.selection = TextSelection.fromPosition(
+        TextPosition(offset: _baseMoneyController.text.length));
+    _targetMoneyController.selection = TextSelection.fromPosition(
+        TextPosition(offset: _targetMoneyController.text.length));
     return Column(
       children: [
         Row(
@@ -33,7 +58,7 @@ class InputSelectMoneyCodeWidget extends StatelessWidget {
                 onTapOutside: (event) =>
                     FocusManager.instance.primaryFocus?.unfocus(),
                 onChanged: (value) {
-                  viewModel.onEvent(
+                  widget.viewModel.onEvent(
                     MainEvent.inputBaseMoney(num.parse(value)),
                   );
                 },
@@ -65,7 +90,7 @@ class InputSelectMoneyCodeWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      state.baseCode,
+                      widget.state.baseCode,
                       style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -76,6 +101,11 @@ class InputSelectMoneyCodeWidget extends StatelessWidget {
                 ),
               ),
               onTap: () {
+                _baseScrollController.dispose();
+                _baseScrollController = FixedExtentScrollController(
+                    initialItem: widget.state.rates.keys
+                        .toList()
+                        .indexWhere((e) => e == widget.state.baseCode));
                 showCupertinoModalPopup(
                   context: context,
                   builder: (context) => CupertinoActionSheet(
@@ -83,12 +113,13 @@ class InputSelectMoneyCodeWidget extends StatelessWidget {
                       SizedBox(
                         height: 350,
                         child: CupertinoPicker(
+                          scrollController: _baseScrollController,
                           onSelectedItemChanged: (int index) {
-                            viewModel.onEvent(MainEvent.selectBaseCode(
-                                state.rates.keys.toList()[index]));
+                            widget.viewModel.onEvent(MainEvent.selectBaseCode(
+                                widget.state.rates.keys.toList()[index]));
                           },
                           itemExtent: 64,
-                          children: state.rates.keys
+                          children: widget.state.rates.keys
                               .map(
                                 (con) => Center(child: Text(con)),
                               )
@@ -119,7 +150,7 @@ class InputSelectMoneyCodeWidget extends StatelessWidget {
                 onTapOutside: (event) =>
                     FocusManager.instance.primaryFocus?.unfocus(),
                 onChanged: (value) {
-                  viewModel.onEvent(
+                  widget.viewModel.onEvent(
                     MainEvent.inputTargetMoney(num.parse(value)),
                   );
                 },
@@ -151,7 +182,7 @@ class InputSelectMoneyCodeWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      state.targetCode,
+                      widget.state.targetCode,
                       style: const TextStyle(
                           fontSize: 16, fontWeight: FontWeight.bold),
                     ),
@@ -160,6 +191,11 @@ class InputSelectMoneyCodeWidget extends StatelessWidget {
                 ),
               ),
               onTap: () {
+                _targetScrollController.dispose();
+                _targetScrollController = FixedExtentScrollController(
+                    initialItem: widget.state.rates.keys
+                        .toList()
+                        .indexWhere((e) => e == widget.state.targetCode));
                 showCupertinoModalPopup(
                   context: context,
                   builder: (context) => CupertinoActionSheet(
@@ -167,12 +203,13 @@ class InputSelectMoneyCodeWidget extends StatelessWidget {
                       SizedBox(
                         height: 350,
                         child: CupertinoPicker(
+                          scrollController: _targetScrollController,
                           onSelectedItemChanged: (int index) {
-                            viewModel.onEvent(MainEvent.selectTargetCode(
-                                state.rates.keys.toList()[index]));
+                            widget.viewModel.onEvent(MainEvent.selectTargetCode(
+                                widget.state.rates.keys.toList()[index]));
                           },
                           itemExtent: 64,
-                          children: state.rates.keys
+                          children: widget.state.rates.keys
                               .map(
                                 (con) => Center(child: Text(con)),
                               )
