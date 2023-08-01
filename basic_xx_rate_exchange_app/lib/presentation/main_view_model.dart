@@ -22,14 +22,37 @@ class MainViewModel with ChangeNotifier {
     switch (event) {
       case LoadData():
         _fetchRates();
+        _state = state.copyWith(targetMoney: state.rates[state.targetCode]);
+
       case InputBaseMoney():
-        _state = state.copyWith(baseMoney: event.money);
+        _state = state.copyWith(
+            baseMoney: event.money,
+            targetMoney: num.parse((event.money *
+                    state.rates[state.targetCode] /
+                    state.rates[state.baseCode])
+                .toStringAsFixed(4)));
+
       case InputTargetMoney():
-        _state = state.copyWith(targetMoney: event.money);
+        _state = state.copyWith(
+            targetMoney: event.money,
+            baseMoney: num.parse((event.money *
+                    state.rates[state.baseCode] /
+                    state.rates[state.targetCode])
+                .toStringAsFixed(4)));
       case SelectBaseCode():
-        _state = state.copyWith(baseCode: event.code);
+        _state = state.copyWith(
+            baseCode: event.code,
+            targetMoney: num.parse((state.baseMoney *
+                    state.rates[state.targetCode] /
+                    state.rates[event.code])
+                .toStringAsFixed(4)));
       case SelectTargetCode():
-        _state = state.copyWith(targetCode: event.code);
+        _state = state.copyWith(
+            targetCode: event.code,
+            baseMoney: num.parse((state.targetMoney *
+                    state.rates[state.baseCode] /
+                    state.rates[event.code])
+                .toStringAsFixed(4)));
     }
     notifyListeners();
   }
