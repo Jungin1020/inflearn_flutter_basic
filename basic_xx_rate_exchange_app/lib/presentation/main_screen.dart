@@ -64,7 +64,8 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   const SizedBox(height: 48),
                   SizedBox(
-                    height: 300,
+                    // height: 300,
+                    height: MediaQuery.of(context).size.width * 0.65,
                     // child: Image.network(
                     //     'https://www.exchangerate-api.com/img/brochure/saas-1-edit-cc.png'),
                     child: Lottie.asset('assets/animation_botanic.json'),

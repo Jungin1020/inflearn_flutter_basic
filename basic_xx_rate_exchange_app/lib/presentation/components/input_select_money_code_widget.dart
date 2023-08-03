@@ -85,7 +85,7 @@ class _InputSelectMoneyCodeWidgetState
             ),
             GestureDetector(
               child: SizedBox(
-                width: 100,
+                width: MediaQuery.of(context).size.width * 0.4,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -177,7 +177,7 @@ class _InputSelectMoneyCodeWidgetState
             ),
             GestureDetector(
               child: SizedBox(
-                width: 100,
+                width: MediaQuery.of(context).size.width * 0.4,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
