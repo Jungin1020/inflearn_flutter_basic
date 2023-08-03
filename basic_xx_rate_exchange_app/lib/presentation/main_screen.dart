@@ -12,17 +12,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   WidgetsFlutterBinding.ensureInitialized();
-  //   Future.microtask(() {
-  //     final viewModel = context.read<MainViewModel>();
-  //
-  //     viewModel.onEvent(const LoadData());
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<MainViewModel>();

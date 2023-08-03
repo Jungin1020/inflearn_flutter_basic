@@ -22,7 +22,7 @@ class MainViewModel with ChangeNotifier {
     switch (event) {
       case LoadData():
         _fetchRates();
-        _state = state.copyWith(targetMoney: state.rates[state.targetCode]);
+      // _state = state.copyWith(targetMoney: state.rates[state.targetCode]);
 
       case InputBaseMoney():
         _state = state.copyWith(
@@ -68,6 +68,8 @@ class MainViewModel with ChangeNotifier {
         _state = state.copyWith(
             lastUpdateTime: data.lastUpdateTime,
             rates: data.rates,
+            targetMoney:
+                num.parse(data.rates[state.targetCode].toStringAsFixed(4)),
             isLoading: false);
         notifyListeners();
       case Error(:final e):
