@@ -43,6 +43,7 @@ dependencies:
   dio: ^5.3.0
   get_it: ^7.6.0
   injectable: ^2.1.2
+  lottie: ^2.5.0
 
 dev_dependencies:
   flutter_test:

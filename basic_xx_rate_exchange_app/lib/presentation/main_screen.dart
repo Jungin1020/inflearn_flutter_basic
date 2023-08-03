@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 
 import 'components/input_select_money_code_widget.dart';
@@ -35,7 +36,7 @@ class _MainScreenState extends State<MainScreen> {
                         children: [
                           Row(
                             children: [
-                              Image.asset('assets/exchange_rate_api_icon.png'),
+                              Image.asset('assets/icon_small.png'),
                               const SizedBox(width: 5),
                               const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,12 +64,12 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   const SizedBox(height: 48),
                   SizedBox(
-                    height: 240,
-                    // color: Colors.grey,
-                    child: Image.network(
-                        'https://www.exchangerate-api.com/img/brochure/saas-1-edit-cc.png'),
+                    height: 300,
+                    // child: Image.network(
+                    //     'https://www.exchangerate-api.com/img/brochure/saas-1-edit-cc.png'),
+                    child: Lottie.asset('assets/animation_botanic.json'),
                   ),
-                  const SizedBox(height: 64),
+                  const SizedBox(height: 32),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 32.0),
                     child: Column(
