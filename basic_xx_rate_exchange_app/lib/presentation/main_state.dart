@@ -10,6 +10,7 @@ class MainState with _$MainState {
   const factory MainState({
     @Default({}) Map<String, dynamic> rates,
     @Default(false) bool isLoading,
+    @Default(false) bool isTapped,
     @Default(1) num baseMoney,
     @Default(1) num targetMoney,
     @Default('USD') String baseCode,

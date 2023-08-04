@@ -1,6 +1,7 @@
 import 'package:basic_xx_rate_exchange_app/core/result.dart';
 import 'package:basic_xx_rate_exchange_app/domain/use_case/get_rates_use_case.dart';
 import 'package:basic_xx_rate_exchange_app/presentation/main_state.dart';
+import 'package:basic_xx_rate_exchange_app/presentation/main_ui_event.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,6 +18,15 @@ class MainViewModel with ChangeNotifier {
   MainState _state = const MainState();
 
   MainState get state => _state;
+
+  void onUiEvent(MainUiEvent event) {
+    switch (event) {
+      case IsTapped():
+        _state = state.copyWith(isTapped: true);
+      case IsNotTapped():
+        _state = state.copyWith(isTapped: false);
+    }
+  }
 
   void onEvent(MainEvent event) {
     switch (event) {

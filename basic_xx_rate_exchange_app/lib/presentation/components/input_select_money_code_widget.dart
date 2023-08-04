@@ -1,3 +1,4 @@
+import 'package:basic_xx_rate_exchange_app/presentation/main_ui_event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -55,18 +56,33 @@ class _InputSelectMoneyCodeWidgetState
               child: TextField(
                 controller: _baseMoneyController,
                 keyboardType: TextInputType.number,
-                onTapOutside: (event) =>
-                    FocusManager.instance.primaryFocus?.unfocus(),
+                onTapOutside: (event) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  widget.viewModel.onUiEvent(const MainUiEvent.isNotTapped());
+                },
                 onChanged: (value) {
                   widget.viewModel.onEvent(
                     MainEvent.inputBaseMoney(num.parse(value)),
                   );
                 },
                 onTap: () {
-                  _baseMoneyController.clear();
+                  // _baseMoneyController.clear();
+                  widget.viewModel.onUiEvent(const MainUiEvent.isTapped());
                 },
                 style: const TextStyle(fontSize: 16),
                 decoration: InputDecoration(
+                  suffixIcon: widget.state.isTapped
+                      ? IconButton(
+                          icon: Icon(
+                            Icons.cancel,
+                            size: 20,
+                            color: Colors.grey.shade400,
+                          ),
+                          onPressed: () {
+                            _baseMoneyController.clear();
+                          },
+                        )
+                      : null,
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 15.0, horizontal: 15),
                   border: const OutlineInputBorder(
@@ -147,20 +163,35 @@ class _InputSelectMoneyCodeWidgetState
               child: TextField(
                 controller: _targetMoneyController,
                 keyboardType: TextInputType.number,
-                onTapOutside: (event) =>
-                    FocusManager.instance.primaryFocus?.unfocus(),
+                onTapOutside: (event) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                  widget.viewModel.onUiEvent(const MainUiEvent.isNotTapped());
+                },
                 onChanged: (value) {
                   widget.viewModel.onEvent(
                     MainEvent.inputTargetMoney(num.parse(value)),
                   );
                 },
                 onTap: () {
-                  _targetMoneyController.clear();
+                  // _targetMoneyController.clear();
+                  widget.viewModel.onUiEvent(const MainUiEvent.isTapped());
                 },
                 style: const TextStyle(fontSize: 16),
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 15.0, horizontal: 15),
+                  suffixIcon: widget.state.isTapped
+                      ? IconButton(
+                          icon: Icon(
+                            Icons.cancel,
+                            size: 20,
+                            color: Colors.grey.shade400,
+                          ),
+                          onPressed: () {
+                            _targetMoneyController.clear();
+                          },
+                        )
+                      : null,
                   border: const OutlineInputBorder(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(4),
