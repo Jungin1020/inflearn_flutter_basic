@@ -49,19 +49,21 @@ class MainViewModel with ChangeNotifier {
                     state.rates[state.baseCode] /
                     state.rates[state.targetCode])
                 .toStringAsFixed(4)));
+
       case SelectBaseCode():
         _state = state.copyWith(
             baseCode: event.code,
-            targetMoney: num.parse((state.baseMoney *
-                    state.rates[state.targetCode] /
-                    state.rates[event.code])
+            baseMoney: num.parse((state.targetMoney *
+                    state.rates[event.code] /
+                    state.rates[state.targetCode])
                 .toStringAsFixed(4)));
+
       case SelectTargetCode():
         _state = state.copyWith(
             targetCode: event.code,
-            baseMoney: num.parse((state.targetMoney *
-                    state.rates[state.baseCode] /
-                    state.rates[event.code])
+            targetMoney: num.parse((state.baseMoney *
+                    state.rates[event.code] /
+                    state.rates[state.baseCode])
                 .toStringAsFixed(4)));
     }
     notifyListeners();
