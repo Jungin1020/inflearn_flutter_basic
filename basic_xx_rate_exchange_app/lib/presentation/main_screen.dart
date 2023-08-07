@@ -43,7 +43,7 @@ class _MainScreenState extends State<MainScreen> {
                                 children: [
                                   SizedBox(height: 3),
                                   Text(
-                                    'ExchangeRate-APP',
+                                    'DayByDay Currency',
                                     style: TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500),
