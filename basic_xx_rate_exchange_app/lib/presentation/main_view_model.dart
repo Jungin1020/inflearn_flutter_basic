@@ -53,9 +53,9 @@ class MainViewModel with ChangeNotifier {
       case SelectBaseCode():
         _state = state.copyWith(
             baseCode: event.code,
-            baseMoney: num.parse((state.targetMoney *
-                    state.rates[event.code] /
-                    state.rates[state.targetCode])
+            targetMoney: num.parse((state.baseMoney *
+                    state.rates[state.targetCode] /
+                    state.rates[event.code])
                 .toStringAsFixed(4)));
 
       case SelectTargetCode():
