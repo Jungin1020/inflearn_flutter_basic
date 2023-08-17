@@ -1,0 +1,22 @@
+{
+  "id": 0,
+  "name": "The Mermaid Inn",
+  "category": "Asian",
+  "categoryDetail": "Seafood",
+  "description": "The panoramic dining at 11 Mirrors Restaurant presents a number of trademarks dishes.",
+  "address": "426 Amsterdam Ave, NY",
+  "distance": 11.1,
+  "stars": 4.5,
+  "imgUrl": "https://img.marieclairekorea.com/2021/05/mck_6090e6d859f68.jpg",
+  "menu": [
+    {
+      "id": 0,
+      "name": "Noodle with Chicken",
+      "price": 22,
+      "weight": 250,
+      "calories": 244,
+      "ingredients": ["Chicken", "Egg", "Mushrooms", "Garlic", "Olive Oil"],
+      "imageUrl": "https://img.marieclairekorea.com"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+import 'package:sqflite/sqflite.dart';
+import '../../domain/model/note.dart';
+
+class NoteDbHelper {
+  Database db;
+
+  NoteDbHelper(this.db);
+
+  Future<Note?> getNoteById(int id) async {
+    final List<Map<String, dynamic>> maps = await db.query(
+      'note',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.isNotEmpty) {
+      return Note.fromJson(maps.first);
+    }
+    return null;
+  }
+
+  Future<List<Note>> getNotes() async {
+    final maps = await db.query('note');
+    return maps.map((e) => Note.fromJson(e)).toList();
+  }
+
+  Future<void> insertNote(Note note) async {
+    await db.insert('note', note.toJson()); // id를 return
+  }
+
+  Future<void> updatetNote(Note note) async {
+    await db.update(
+      'note',
+      note.toJson(),
+      where: 'id = ?',
+      whereArgs: [note.id],
+    ); // count return
+  }
+
+  Future<void> deleteNote(Note note) async {
+    await db.delete(
+      'note',
+      where: 'id = ?',
+      whereArgs: [note.id],
+    );
+  }
+}
